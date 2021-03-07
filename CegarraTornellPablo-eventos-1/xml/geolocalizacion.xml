@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<geonames>
+    <entry>
+        <lang>es</lang>
+        <title>Museo de Arte Contemporáneo (Madrid)</title>
+        <summary>El Museo de Arte Contemporáneo, llamado anteriormente Museo Municipal de Arte Contemporáneo, se encuentra en el distrito Centro de la capital de España, en la calle Conde Duque. Se encuentra ubicado en las instalaciones del edificio del Cuartel del Conde-Duque, construido por el arquitecto Pedro de (...)</summary>
+        <feature/>
+        <countryCode/>
+        <elevation>671</elevation>
+        <lat>40.4279</lat>
+        <lng>-3.7107</lng>
+        <wikipediaUrl>https://es.wikipedia.org/wiki/Museo_de_Arte_Contempor%C3%A1neo_%28Madrid%29</wikipediaUrl>
+        <thumbnailImg/>
+        <rank>79</rank>
+        <distance>0.0466</distance>
+    </entry>
+    <entry>
+        <lang>es</lang>
+        <title>Cuartel del Conde-Duque</title>
+        <summary>El cuartel del Conde-Duque es un edificio de estilo barroco churrigueresco construido en la ciudad española de Madrid por el arquitecto madrileño Pedro de Ribera, a partir de 1717. Se encuentra en la calle del Conde Duque, no lejos del palacio de Liria y el Museo ABC (...)</summary>
+        <feature/>
+        <countryCode/>
+        <elevation>671</elevation>
+        <lat>40.4279</lat>
+        <lng>-3.7107</lng>
+        <wikipediaUrl>https://es.wikipedia.org/wiki/Cuartel_del_Conde-Duque</wikipediaUrl>
+        <thumbnailImg/>
+        <rank>85</rank>
+        <distance>0.0466</distance>
+    </entry>
+    <entry>
+        <lang>es</lang>
+        <title>Palacio de Liria</title>
+        <summary>El palacio de Liria es un gran palacio urbano sito en Madrid, construido en el siglo . Desde principios del siglo XIX es la residencia oficial de la Casa de Alba en la capital de España y principal sede de su invaluable colección de arte y archivo histórico  (...)</summary>
+        <feature>landmark</feature>
+        <countryCode/>
+        <elevation>657</elevation>
+        <lat>40.4277</lat>
+        <lng>-3.7124</lng>
+        <wikipediaUrl>https://es.wikipedia.org/wiki/Palacio_de_Liria</wikipediaUrl>
+        <thumbnailImg/>
+        <rank>96</rank>
+        <distance>0.1912</distance>
+    </entry>
+    <entry>
+        <lang>es</lang>
+        <title>Universidad Pontificia Comillas</title>
+        <summary>La Universidad Pontificia Comillas es una universidad privada, católica, dirigida por la Compañía de Jesús, con sede en Madrid (España) y campus en Madrid, Cantoblanco y Ciempozuelos. Su nombre viene de que se fundó en Comillas (Cantabria). Cuenta con 9.301 alumnos y 1.712 profesores.  (...)</summary>
+        <feature>edu</feature>
+        <countryCode>ES</countryCode>
+        <elevation>676</elevation>
+        <lat>40.43</lat>
+        <lng>-3.7114</lng>
+        <wikipediaUrl>https://es.wikipedia.org/wiki/Universidad_Pontificia_Comillas</wikipediaUrl>
+        <thumbnailImg/>
+        <rank>95</rank>
+        <distance>0.2418</distance>
+    </entry>
+    <entry>
+        <lang>es</lang>
+        <title>Argüelles (Madrid)</title>
+        <summary>Argüelles es un barrio madrileño que se encuentra en el distrito de Moncloa-Aravaca. El barrio lleva el nombre de Agustín Argüelles Álvarez, un político español del siglo XIX. Tiene una superficie de 75,47 hectáreas (...)</summary>
+        <feature>city</feature>
+        <countryCode>ES</countryCode>
+        <elevation>679</elevation>
+        <lat>40.4303</lat>
+        <lng>-3.7088</lng>
+        <wikipediaUrl>https://es.wikipedia.org/wiki/Arg%C3%BCelles_%28Madrid%29</wikipediaUrl>
+        <thumbnailImg/>
+        <rank>87</rank>
+        <distance>0.2761</distance>
+    </entry>
+</geonames>
