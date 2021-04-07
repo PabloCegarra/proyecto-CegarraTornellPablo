@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<bindings xmlns="http://java.sun.com/xml/ns/jaxb" if-exists="true" version="2.1">
+  <!--
+
+Este archivo ha sido generado por la arquitectura JavaTM para la implantación de la referencia de enlace (JAXB) XML v2.3.0 
+Visite <a href="https://javaee.github.io/jaxb-v2/">https://javaee.github.io/jaxb-v2/</a> 
+Todas las modificaciones realizadas en este archivo se perderán si se vuelve a compilar el esquema de origen. 
+Generado el: 2021.04.08 a las 12:35:36 AM CEST 
+
+  -->
+  <bindings xmlns:tns="http://www.example.org/EventoCultural" if-exists="true" scd="x-schema::tns">
+    <schemaBindings map="false">
+      <package name="org.example.eventocultural"/>
+    </schemaBindings>
+    <bindings if-exists="true" scd="tns:eventoCultural">
+      <class ref="org.example.eventocultural.EventoCultural"/>
+    </bindings>
+    <bindings if-exists="true" scd="~tns:tipoActuaciones">
+      <class ref="org.example.eventocultural.TipoActuaciones"/>
+    </bindings>
+  </bindings>
+</bindings>
