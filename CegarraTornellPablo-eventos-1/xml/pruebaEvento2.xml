@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<eventoCultural id="11322033"
+	xmlns="http://www.example.org/EventoCultural"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.example.org/EventoCultural EventoCultural.xsd ">
+	<nombre>13 Lunas</nombre>
+	<fechaInicio>2021-05-26 19:30:00.0</fechaInicio>
+	<fechaFin>2021-05-26 23:59:00.0</fechaFin>
+	<resumen>Menhir (Coco Moya e Iván Cebrián). Kebyart Ensemble, Cuarteto
+		de Saxofones. Obras de Igor Stravinsky, Joan Magrané, José Río-Pareja
+		(1973) - Parhelia (2018), 10’ , Franz Schubert, Raquel García-Tomás.
+	</resumen>
+	<url>http://www.madrid.es/sites/v/index.jsp?vgnextchannel=ca9671ee4a9eb410VgnVCM100000171f5a0aRCRD&amp;vgnextoid=47efc8f96f587710VgnVCM1000001d4a900aRCRD
+	</url>
+	<localizacion>CentroCentro</localizacion>
+	<coordenadaLongitud>-3.692206111679657</coordenadaLongitud>
+	<coordenadaLatitud>40.419011767401095</coordenadaLatitud>
+
+</eventoCultural>

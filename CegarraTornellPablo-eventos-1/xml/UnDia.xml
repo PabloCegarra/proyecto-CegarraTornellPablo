@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+	<rdf:RDF 
+		xmlns:dc="http://purl.org/dc/terms/"
+	    xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	    xmlns:geonames="http://www.geonames.org/ontology#"
+	  	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+	    xmlns:v="http://www.w3.org/2006/vcard/ns#"
+	    xmlns:loc="http://purl.org/ctic/infraestructuras/localizacion#"
+	    xmlns:c="http://www.w3.org/2002/12/cal#"
+	    xmlns:t="http://idi.fundacionctic.org/cruzar/turismo#">	
+	
+		<c:Vevent rdf:about="https://datos.madrid.es/egob/catalogo/tipo/evento/11322033-13-lunas">    
+	 		<c:uid>11322033</c:uid>
+	 		<v:fn>13 Lunas</v:fn>
+			<c:resource>null</c:resource>
+			
+	 		
+	 			<c:exdate/>
+	 			 		
+	 		<c:dtstart>2021-05-26 19:30:00.0</c:dtstart>
+	 		<c:dtend>2021-05-26 23:59:00.0</c:dtend>
+	 		
+	 		
+	 			<c:summary><![CDATA[Menhir (Coco Moya e Iván Cebrián).  Kebyart Ensemble, Cuarteto de Saxofones.  Obras de Igor Stravinsky, Joan Magrané, José Río-Pareja (1973) - Parhelia (2018), 10’ , Franz Schubert, Raquel García-Tomás.]]></c:summary>
+	 		
+			<c:url>http://www.madrid.es/sites/v/index.jsp?vgnextchannel=ca9671ee4a9eb410VgnVCM100000171f5a0aRCRD&amp;vgnextoid=47efc8f96f587710VgnVCM1000001d4a900aRCRD</c:url>
+			
+				<dc:references rdf:resource="http://www.madrid.es/sites/v/index.jsp?vgnextchannel=ca9671ee4a9eb410VgnVCM100000171f5a0aRCRD&amp;vgnextoid=30a6916a09187710VgnVCM1000001d4a900aRCRD"/>
+			
+			
+			
+			
+				<c:location>CentroCentro</c:location>
+				<dc:relation rdf:resource="https://datos.madrid.es/egob/catalogo/tipo/entidadesyorganismos/6013703-centrocentro"/>
+				
+				
+					<v:adr>
+						<rdf:Description>
+							
+							
+							
+							
+								<loc:distrito rdf:resource="https://datos.madrid.es/egob/kos/Provincia/Madrid/Municipio/Madrid/Distrito/Retiro"/>				
+							
+						</rdf:Description>  
+					</v:adr>				
+					<v:geo>
+						<rdf:Description>
+							<geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-3.692206111679657</geo:long>
+							<geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">40.419011767401095</geo:lat>
+						</rdf:Description>
+					</v:geo> 
+				
+			
+	
+			
+			
+				<rdf:type rdf:resource="https://datos.madrid.es/egob/kos/actividades/ProgramacionDestacadaAgendaCultura"/>
+			
+			
+		</c:Vevent>
+	</rdf:RDF>	
+	

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.example.org/EventoCultural"
+	xmlns:tns="http://www.example.org/EventoCultural"
+	elementFormDefault="qualified">
+
+	<element name="eventoCultural">
+		<complexType>
+			<sequence>
+				<element name="nombre" minOccurs="1" />
+				<element name="fechaInicio" minOccurs="1" />
+				<element name="fechaFin" minOccurs="1" />
+				<element name="resumen" />
+				<element name="url" minOccurs="1" />
+				<element name="urlWikipedia" minOccurs="0" />
+				<element name="localizacion" minOccurs="1" />
+				<element name="coordenadaLongitud" type="tns:tipoCoordenada"
+					minOccurs="1" />
+				<element name="coordenadaLatitud" type="tns:tipoCoordenada"
+					minOccurs="1" />
+				<element name="actuaciones" type="tns:tipoActuaciones"
+					minOccurs="0" />
+			</sequence>
+			<attribute name="id" use="required" />
+		</complexType>
+	</element>
+
+	<complexType name="tipoActuaciones">
+		<sequence>
+			<element name="frecuencia" type="string" />
+			<element name="dias" type="string" />
+			<element name="intervalo" type="integer" />
+		</sequence>
+	</complexType>
+
+	<simpleType name="tipoCoordenada">
+		<restriction base="double" />
+	</simpleType>
+
+</schema>
+
+
