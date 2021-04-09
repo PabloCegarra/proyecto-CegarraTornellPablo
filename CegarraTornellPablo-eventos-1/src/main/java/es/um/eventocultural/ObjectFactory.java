@@ -2,11 +2,11 @@
 // Este archivo ha sido generado por la arquitectura JavaTM para la implantación de la referencia de enlace (JAXB) XML v2.3.0 
 // Visite <a href="https://javaee.github.io/jaxb-v2/">https://javaee.github.io/jaxb-v2/</a> 
 // Todas las modificaciones realizadas en este archivo se perderán si se vuelve a compilar el esquema de origen. 
-// Generado el: 2021.04.08 a las 12:37:33 AM CEST 
+// Generado el: 2021.04.10 a las 01:31:16 AM CEST 
 //
 
 
-package arso21.org.example.eventocultural;
+package es.um.eventocultural;
 
 import javax.xml.bind.annotation.XmlRegistry;
 
@@ -14,7 +14,7 @@ import javax.xml.bind.annotation.XmlRegistry;
 /**
  * This object contains factory methods for each 
  * Java content interface and Java element interface 
- * generated in the org.example.eventocultural package. 
+ * generated in the es.um.eventocultural package. 
  * <p>An ObjectFactory allows you to programatically 
  * construct new instances of the Java representation 
  * for XML content. The Java representation of XML 
@@ -30,7 +30,7 @@ public class ObjectFactory {
 
 
     /**
-     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: org.example.eventocultural
+     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: es.um.eventocultural
      * 
      */
     public ObjectFactory() {

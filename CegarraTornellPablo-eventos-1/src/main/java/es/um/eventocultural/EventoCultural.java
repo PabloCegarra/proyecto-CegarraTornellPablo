@@ -2,11 +2,11 @@
 // Este archivo ha sido generado por la arquitectura JavaTM para la implantación de la referencia de enlace (JAXB) XML v2.3.0 
 // Visite <a href="https://javaee.github.io/jaxb-v2/">https://javaee.github.io/jaxb-v2/</a> 
 // Todas las modificaciones realizadas en este archivo se perderán si se vuelve a compilar el esquema de origen. 
-// Generado el: 2021.04.08 a las 12:35:36 AM CEST 
+// Generado el: 2021.04.10 a las 01:31:16 AM CEST 
 //
 
 
-package org.example.eventocultural;
+package es.um.eventocultural;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -27,16 +27,16 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="nombre" type="{http://www.w3.org/2001/XMLSchema}anyType"/&gt;
- *         &lt;element name="fechaInicio" type="{http://www.w3.org/2001/XMLSchema}anyType"/&gt;
- *         &lt;element name="fechaFin" type="{http://www.w3.org/2001/XMLSchema}anyType"/&gt;
- *         &lt;element name="resumen" type="{http://www.w3.org/2001/XMLSchema}anyType"/&gt;
- *         &lt;element name="url" type="{http://www.w3.org/2001/XMLSchema}anyType"/&gt;
- *         &lt;element name="urlWikipedia" type="{http://www.w3.org/2001/XMLSchema}anyType" minOccurs="0"/&gt;
- *         &lt;element name="localizacion" type="{http://www.w3.org/2001/XMLSchema}anyType"/&gt;
- *         &lt;element name="coordenadaLongitud" type="{http://www.example.org/EventoCultural}tipoCoordenada"/&gt;
- *         &lt;element name="coordenadaLatitud" type="{http://www.example.org/EventoCultural}tipoCoordenada"/&gt;
- *         &lt;element name="actuaciones" type="{http://www.example.org/EventoCultural}tipoActuaciones" minOccurs="0"/&gt;
+ *         &lt;element name="nombre" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="fechaInicio" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="fechaFin" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="resumen" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="url" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="urlWikipedia" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="localizacion" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="coordenadaLongitud" type="{http://www.um.es/EventoCultural}tipoCoordenada"/&gt;
+ *         &lt;element name="coordenadaLatitud" type="{http://www.um.es/EventoCultural}tipoCoordenada"/&gt;
+ *         &lt;element name="actuaciones" type="{http://www.um.es/EventoCultural}tipoActuaciones" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *       &lt;attribute name="id" use="required" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" /&gt;
  *     &lt;/restriction&gt;
@@ -63,18 +63,18 @@ import javax.xml.bind.annotation.XmlType;
 public class EventoCultural {
 
     @XmlElement(required = true)
-    protected Object nombre;
+    protected String nombre;
     @XmlElement(required = true)
-    protected Object fechaInicio;
+    protected String fechaInicio;
     @XmlElement(required = true)
-    protected Object fechaFin;
+    protected String fechaFin;
     @XmlElement(required = true)
-    protected Object resumen;
+    protected String resumen;
     @XmlElement(required = true)
-    protected Object url;
-    protected Object urlWikipedia;
+    protected String url;
+    protected String urlWikipedia;
     @XmlElement(required = true)
-    protected Object localizacion;
+    protected String localizacion;
     protected double coordenadaLongitud;
     protected double coordenadaLatitud;
     protected TipoActuaciones actuaciones;
@@ -87,10 +87,10 @@ public class EventoCultural {
      * 
      * @return
      *     possible object is
-     *     {@link Object }
+     *     {@link String }
      *     
      */
-    public Object getNombre() {
+    public String getNombre() {
         return nombre;
     }
 
@@ -99,10 +99,10 @@ public class EventoCultural {
      * 
      * @param value
      *     allowed object is
-     *     {@link Object }
+     *     {@link String }
      *     
      */
-    public void setNombre(Object value) {
+    public void setNombre(String value) {
         this.nombre = value;
     }
 
@@ -111,10 +111,10 @@ public class EventoCultural {
      * 
      * @return
      *     possible object is
-     *     {@link Object }
+     *     {@link String }
      *     
      */
-    public Object getFechaInicio() {
+    public String getFechaInicio() {
         return fechaInicio;
     }
 
@@ -123,10 +123,10 @@ public class EventoCultural {
      * 
      * @param value
      *     allowed object is
-     *     {@link Object }
+     *     {@link String }
      *     
      */
-    public void setFechaInicio(Object value) {
+    public void setFechaInicio(String value) {
         this.fechaInicio = value;
     }
 
@@ -135,10 +135,10 @@ public class EventoCultural {
      * 
      * @return
      *     possible object is
-     *     {@link Object }
+     *     {@link String }
      *     
      */
-    public Object getFechaFin() {
+    public String getFechaFin() {
         return fechaFin;
     }
 
@@ -147,10 +147,10 @@ public class EventoCultural {
      * 
      * @param value
      *     allowed object is
-     *     {@link Object }
+     *     {@link String }
      *     
      */
-    public void setFechaFin(Object value) {
+    public void setFechaFin(String value) {
         this.fechaFin = value;
     }
 
@@ -159,10 +159,10 @@ public class EventoCultural {
      * 
      * @return
      *     possible object is
-     *     {@link Object }
+     *     {@link String }
      *     
      */
-    public Object getResumen() {
+    public String getResumen() {
         return resumen;
     }
 
@@ -171,10 +171,10 @@ public class EventoCultural {
      * 
      * @param value
      *     allowed object is
-     *     {@link Object }
+     *     {@link String }
      *     
      */
-    public void setResumen(Object value) {
+    public void setResumen(String value) {
         this.resumen = value;
     }
 
@@ -183,10 +183,10 @@ public class EventoCultural {
      * 
      * @return
      *     possible object is
-     *     {@link Object }
+     *     {@link String }
      *     
      */
-    public Object getUrl() {
+    public String getUrl() {
         return url;
     }
 
@@ -195,10 +195,10 @@ public class EventoCultural {
      * 
      * @param value
      *     allowed object is
-     *     {@link Object }
+     *     {@link String }
      *     
      */
-    public void setUrl(Object value) {
+    public void setUrl(String value) {
         this.url = value;
     }
 
@@ -207,10 +207,10 @@ public class EventoCultural {
      * 
      * @return
      *     possible object is
-     *     {@link Object }
+     *     {@link String }
      *     
      */
-    public Object getUrlWikipedia() {
+    public String getUrlWikipedia() {
         return urlWikipedia;
     }
 
@@ -219,10 +219,10 @@ public class EventoCultural {
      * 
      * @param value
      *     allowed object is
-     *     {@link Object }
+     *     {@link String }
      *     
      */
-    public void setUrlWikipedia(Object value) {
+    public void setUrlWikipedia(String value) {
         this.urlWikipedia = value;
     }
 
@@ -231,10 +231,10 @@ public class EventoCultural {
      * 
      * @return
      *     possible object is
-     *     {@link Object }
+     *     {@link String }
      *     
      */
-    public Object getLocalizacion() {
+    public String getLocalizacion() {
         return localizacion;
     }
 
@@ -243,10 +243,10 @@ public class EventoCultural {
      * 
      * @param value
      *     allowed object is
-     *     {@link Object }
+     *     {@link String }
      *     
      */
-    public void setLocalizacion(Object value) {
+    public void setLocalizacion(String value) {
         this.localizacion = value;
     }
 

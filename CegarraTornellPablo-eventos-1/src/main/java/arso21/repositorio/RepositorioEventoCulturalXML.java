@@ -10,6 +10,7 @@ import javax.xml.bind.Unmarshaller;
 
 import arso21.repositorio.utils.Utils;
 import arso21.sax.EventoResumen;
+import es.um.eventocultural.EventoCultural;
 
 
 
@@ -41,28 +42,27 @@ public class RepositorioEventoCulturalXML implements RepositorioEventoCultural {
 		return fichero.exists();
 	}
 
-	protected void save(EventoResumen actividad) throws RepositorioException {
+	protected void save(EventoCultural evento) throws RepositorioException {
 
-		final String documento = getDocumento(actividad.getId());
+		final String documento = getDocumento(evento.getId());
 
 		final File fichero = new File(documento);
 
 		try {
 
-			JAXBContext contexto = JAXBContext.newInstance("org.example.eventocultural");
+			JAXBContext contexto = JAXBContext.newInstance(EventoCultural.class);
 			Marshaller marshaller = contexto.createMarshaller();
-
 			marshaller.setProperty("jaxb.formatted.output", true);
-
-			marshaller.marshal(actividad, fichero);
+			marshaller.setProperty(Marshaller.JAXB_SCHEMA_LOCATION, "EventoCultural.xsd");
+			marshaller.marshal(evento, fichero);
 
 		} catch (Exception e) {
 
-			throw new RepositorioException("Error al guardar el evento cultural con id: " + actividad.getId(), e);
+			throw new RepositorioException("Error al guardar el evento cultural con id: " + evento.getId(), e);
 		}
 	}
 
-	protected EventoResumen load(String id) throws RepositorioException, EntidadNoEncontrada {
+	protected EventoCultural load(String id) throws RepositorioException, EntidadNoEncontrada {
 
 		if (!checkDocumento(id))
 			throw new EntidadNoEncontrada("El evento no existe, id: " + id);
@@ -71,10 +71,10 @@ public class RepositorioEventoCulturalXML implements RepositorioEventoCultural {
 
 		try {
 
-			JAXBContext contexto = JAXBContext.newInstance("org.example.eventocultural");
+			JAXBContext contexto = JAXBContext.newInstance("es.um.eventocultural");
 			Unmarshaller unmarshaller = contexto.createUnmarshaller();
 
-			return (EventoResumen) unmarshaller.unmarshal(new File(documento));
+			return (EventoCultural) unmarshaller.unmarshal(new File(documento));
 
 		} catch (Exception e) {
 			throw new RepositorioException("Error al cargar el evento con id: " + id, e);
@@ -84,7 +84,7 @@ public class RepositorioEventoCulturalXML implements RepositorioEventoCultural {
 	/*** Fin métodos de apoyo ***/
 
 	@Override
-	public String add(EventoResumen evento) throws RepositorioException {
+	public String add(EventoCultural evento) throws RepositorioException {
 
 		String id = Utils.createId();
 
@@ -95,7 +95,7 @@ public class RepositorioEventoCulturalXML implements RepositorioEventoCultural {
 	}
 
 	@Override
-	public void update(EventoResumen evento) throws RepositorioException, EntidadNoEncontrada {
+	public void update(EventoCultural evento) throws RepositorioException, EntidadNoEncontrada {
 
 		if (!checkDocumento(evento.getId()))
 			throw new EntidadNoEncontrada("El evento no existe, id: " + evento.getId());
@@ -105,7 +105,7 @@ public class RepositorioEventoCulturalXML implements RepositorioEventoCultural {
 	}
 
 	@Override
-	public void delete(EventoResumen evento) throws EntidadNoEncontrada {
+	public void delete(EventoCultural evento) throws EntidadNoEncontrada {
 
 		if (!checkDocumento(evento.getId()))
 			throw new EntidadNoEncontrada("El evento no existe, id: " + evento.getId());
@@ -118,7 +118,7 @@ public class RepositorioEventoCulturalXML implements RepositorioEventoCultural {
 	}
 
 	@Override
-	public EventoResumen getById(String id) throws RepositorioException, EntidadNoEncontrada {
+	public EventoCultural getById(String id) throws RepositorioException, EntidadNoEncontrada {
 
 		return load(id);
 	}
@@ -143,9 +143,9 @@ public class RepositorioEventoCulturalXML implements RepositorioEventoCultural {
 	}
 
 	@Override
-	public List<EventoResumen> getAll() throws RepositorioException {
+	public List<EventoCultural> getAll() throws RepositorioException {
 
-		LinkedList<EventoResumen> resultado = new LinkedList<EventoResumen>();
+		LinkedList<EventoCultural> resultado = new LinkedList<EventoCultural>();
 
 		for (String id : getIds()) {
 			
