@@ -71,7 +71,7 @@ public class RepositorioEventoCulturalXML implements RepositorioEventoCultural {
 
 		try {
 
-			JAXBContext contexto = JAXBContext.newInstance("es.um.eventocultural");
+			JAXBContext contexto = JAXBContext.newInstance(EventoCultural.class);
 			Unmarshaller unmarshaller = contexto.createUnmarshaller();
 
 			return (EventoCultural) unmarshaller.unmarshal(new File(documento));
