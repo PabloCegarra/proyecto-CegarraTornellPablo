@@ -2,8 +2,9 @@
 // Este archivo ha sido generado por la arquitectura JavaTM para la implantación de la referencia de enlace (JAXB) XML v2.3.0 
 // Visite <a href="https://javaee.github.io/jaxb-v2/">https://javaee.github.io/jaxb-v2/</a> 
 // Todas las modificaciones realizadas en este archivo se perderán si se vuelve a compilar el esquema de origen. 
-// Generado el: 2021.04.10 a las 01:31:16 AM CEST 
+// Generado el: 2021.04.11 a las 01:53:27 AM CEST 
 //
+
 
 package es.um.eventocultural;
 
@@ -15,13 +16,11 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 
+
 /**
- * <p>
- * Clase Java para anonymous complex type.
+ * <p>Clase Java para anonymous complex type.
  * 
- * <p>
- * El siguiente fragmento de esquema especifica el contenido que se espera que
- * haya en esta clase.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType&gt;
@@ -35,8 +34,8 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="url" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *         &lt;element name="urlWikipedia" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="localizacion" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
- *         &lt;element name="coordenadaLongitud" type="{http://www.um.es/EventoCultural}tipoCoordenada"/&gt;
- *         &lt;element name="coordenadaLatitud" type="{http://www.um.es/EventoCultural}tipoCoordenada"/&gt;
+ *         &lt;element name="coordenadaLongitud" type="{http://www.um.es/EventoCultural}tipoCoordenada" minOccurs="0"/&gt;
+ *         &lt;element name="coordenadaLatitud" type="{http://www.um.es/EventoCultural}tipoCoordenada" minOccurs="0"/&gt;
  *         &lt;element name="actuaciones" type="{http://www.um.es/EventoCultural}tipoActuaciones" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *       &lt;attribute name="id" use="required" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" /&gt;
@@ -48,257 +47,303 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = { "nombre", "fechaInicio", "fechaFin", "resumen", "url", "urlWikipedia", "localizacion",
-		"coordenadaLongitud", "coordenadaLatitud", "actuaciones" })
+@XmlType(name = "", propOrder = {
+    "nombre",
+    "fechaInicio",
+    "fechaFin",
+    "resumen",
+    "url",
+    "urlWikipedia",
+    "localizacion",
+    "coordenadaLongitud",
+    "coordenadaLatitud",
+    "actuaciones"
+})
 @XmlRootElement(name = "eventoCultural")
 public class EventoCultural {
 
-	@XmlElement(required = true)
-	protected String nombre;
-	@XmlElement(required = true)
-	protected String fechaInicio;
-	@XmlElement(required = true)
-	protected String fechaFin;
-	@XmlElement(required = true)
-	protected String resumen;
-	@XmlElement(required = true)
-	protected String url;
-	protected String urlWikipedia;
-	@XmlElement(required = true)
-	protected String localizacion;
-	protected double coordenadaLongitud;
-	protected double coordenadaLatitud;
-	protected TipoActuaciones actuaciones;
-	@XmlAttribute(name = "id", required = true)
-	@XmlSchemaType(name = "anySimpleType")
-	protected String id;
+    @XmlElement(required = true)
+    protected String nombre;
+    @XmlElement(required = true)
+    protected String fechaInicio;
+    @XmlElement(required = true)
+    protected String fechaFin;
+    @XmlElement(required = true)
+    protected String resumen;
+    @XmlElement(required = true)
+    protected String url;
+    protected String urlWikipedia;
+    @XmlElement(required = true)
+    protected String localizacion;
+    protected Double coordenadaLongitud;
+    protected Double coordenadaLatitud;
+    protected TipoActuaciones actuaciones;
+    @XmlAttribute(name = "id", required = true)
+    @XmlSchemaType(name = "anySimpleType")
+    protected String id;
 
-	/**
-	 * Obtiene el valor de la propiedad nombre.
-	 * 
-	 * @return possible object is {@link String }
-	 * 
-	 */
-	public String getNombre() {
-		return nombre;
-	}
+    /**
+     * Obtiene el valor de la propiedad nombre.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getNombre() {
+        return nombre;
+    }
 
-	/**
-	 * Define el valor de la propiedad nombre.
-	 * 
-	 * @param value allowed object is {@link String }
-	 * 
-	 */
-	public void setNombre(String value) {
-		this.nombre = value;
-	}
+    /**
+     * Define el valor de la propiedad nombre.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setNombre(String value) {
+        this.nombre = value;
+    }
 
-	/**
-	 * Obtiene el valor de la propiedad fechaInicio.
-	 * 
-	 * @return possible object is {@link String }
-	 * 
-	 */
-	public String getFechaInicio() {
-		return fechaInicio;
-	}
+    /**
+     * Obtiene el valor de la propiedad fechaInicio.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getFechaInicio() {
+        return fechaInicio;
+    }
 
-	/**
-	 * Define el valor de la propiedad fechaInicio.
-	 * 
-	 * @param value allowed object is {@link String }
-	 * 
-	 */
-	public void setFechaInicio(String value) {
-		this.fechaInicio = value;
-	}
+    /**
+     * Define el valor de la propiedad fechaInicio.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setFechaInicio(String value) {
+        this.fechaInicio = value;
+    }
 
-	/**
-	 * Obtiene el valor de la propiedad fechaFin.
-	 * 
-	 * @return possible object is {@link String }
-	 * 
-	 */
-	public String getFechaFin() {
-		return fechaFin;
-	}
+    /**
+     * Obtiene el valor de la propiedad fechaFin.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getFechaFin() {
+        return fechaFin;
+    }
 
-	/**
-	 * Define el valor de la propiedad fechaFin.
-	 * 
-	 * @param value allowed object is {@link String }
-	 * 
-	 */
-	public void setFechaFin(String value) {
-		this.fechaFin = value;
-	}
+    /**
+     * Define el valor de la propiedad fechaFin.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setFechaFin(String value) {
+        this.fechaFin = value;
+    }
 
-	/**
-	 * Obtiene el valor de la propiedad resumen.
-	 * 
-	 * @return possible object is {@link String }
-	 * 
-	 */
-	public String getResumen() {
-		return resumen;
-	}
+    /**
+     * Obtiene el valor de la propiedad resumen.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getResumen() {
+        return resumen;
+    }
 
-	/**
-	 * Define el valor de la propiedad resumen.
-	 * 
-	 * @param value allowed object is {@link String }
-	 * 
-	 */
-	public void setResumen(String value) {
-		this.resumen = value;
-	}
+    /**
+     * Define el valor de la propiedad resumen.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setResumen(String value) {
+        this.resumen = value;
+    }
 
-	/**
-	 * Obtiene el valor de la propiedad url.
-	 * 
-	 * @return possible object is {@link String }
-	 * 
-	 */
-	public String getUrl() {
-		return url;
-	}
+    /**
+     * Obtiene el valor de la propiedad url.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getUrl() {
+        return url;
+    }
 
-	/**
-	 * Define el valor de la propiedad url.
-	 * 
-	 * @param value allowed object is {@link String }
-	 * 
-	 */
-	public void setUrl(String value) {
-		this.url = value;
-	}
+    /**
+     * Define el valor de la propiedad url.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setUrl(String value) {
+        this.url = value;
+    }
 
-	/**
-	 * Obtiene el valor de la propiedad urlWikipedia.
-	 * 
-	 * @return possible object is {@link String }
-	 * 
-	 */
-	public String getUrlWikipedia() {
-		return urlWikipedia;
-	}
+    /**
+     * Obtiene el valor de la propiedad urlWikipedia.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getUrlWikipedia() {
+        return urlWikipedia;
+    }
 
-	/**
-	 * Define el valor de la propiedad urlWikipedia.
-	 * 
-	 * @param value allowed object is {@link String }
-	 * 
-	 */
-	public void setUrlWikipedia(String value) {
-		this.urlWikipedia = value;
-	}
+    /**
+     * Define el valor de la propiedad urlWikipedia.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setUrlWikipedia(String value) {
+        this.urlWikipedia = value;
+    }
 
-	/**
-	 * Obtiene el valor de la propiedad localizacion.
-	 * 
-	 * @return possible object is {@link String }
-	 * 
-	 */
-	public String getLocalizacion() {
-		return localizacion;
-	}
+    /**
+     * Obtiene el valor de la propiedad localizacion.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getLocalizacion() {
+        return localizacion;
+    }
 
-	/**
-	 * Define el valor de la propiedad localizacion.
-	 * 
-	 * @param value allowed object is {@link String }
-	 * 
-	 */
-	public void setLocalizacion(String value) {
-		this.localizacion = value;
-	}
+    /**
+     * Define el valor de la propiedad localizacion.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setLocalizacion(String value) {
+        this.localizacion = value;
+    }
 
-	/**
-	 * Obtiene el valor de la propiedad coordenadaLongitud.
-	 * 
-	 */
-	public double getCoordenadaLongitud() {
-		return coordenadaLongitud;
-	}
+    /**
+     * Obtiene el valor de la propiedad coordenadaLongitud.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Double }
+     *     
+     */
+    public Double getCoordenadaLongitud() {
+        return coordenadaLongitud;
+    }
 
-	/**
-	 * Define el valor de la propiedad coordenadaLongitud.
-	 * 
-	 */
-	public void setCoordenadaLongitud(double value) {
-		this.coordenadaLongitud = value;
-	}
+    /**
+     * Define el valor de la propiedad coordenadaLongitud.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Double }
+     *     
+     */
+    public void setCoordenadaLongitud(Double value) {
+        this.coordenadaLongitud = value;
+    }
 
-	/**
-	 * Obtiene el valor de la propiedad coordenadaLatitud.
-	 * 
-	 */
-	public double getCoordenadaLatitud() {
-		return coordenadaLatitud;
-	}
+    /**
+     * Obtiene el valor de la propiedad coordenadaLatitud.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Double }
+     *     
+     */
+    public Double getCoordenadaLatitud() {
+        return coordenadaLatitud;
+    }
 
-	/**
-	 * Define el valor de la propiedad coordenadaLatitud.
-	 * 
-	 */
-	public void setCoordenadaLatitud(double value) {
-		this.coordenadaLatitud = value;
-	}
+    /**
+     * Define el valor de la propiedad coordenadaLatitud.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Double }
+     *     
+     */
+    public void setCoordenadaLatitud(Double value) {
+        this.coordenadaLatitud = value;
+    }
 
-	/**
-	 * Obtiene el valor de la propiedad actuaciones.
-	 * 
-	 * @return possible object is {@link TipoActuaciones }
-	 * 
-	 */
-	public TipoActuaciones getActuaciones() {
-		return actuaciones;
-	}
+    /**
+     * Obtiene el valor de la propiedad actuaciones.
+     * 
+     * @return
+     *     possible object is
+     *     {@link TipoActuaciones }
+     *     
+     */
+    public TipoActuaciones getActuaciones() {
+        return actuaciones;
+    }
 
-	/**
-	 * Define el valor de la propiedad actuaciones.
-	 * 
-	 * @param value allowed object is {@link TipoActuaciones }
-	 * 
-	 */
-	public void setActuaciones(TipoActuaciones value) {
-		this.actuaciones = value;
-	}
+    /**
+     * Define el valor de la propiedad actuaciones.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link TipoActuaciones }
+     *     
+     */
+    public void setActuaciones(TipoActuaciones value) {
+        this.actuaciones = value;
+    }
 
-	/**
-	 * Obtiene el valor de la propiedad id.
-	 * 
-	 * @return possible object is {@link String }
-	 * 
-	 */
-	public String getId() {
-		return id;
-	}
+    /**
+     * Obtiene el valor de la propiedad id.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getId() {
+        return id;
+    }
 
-	/**
-	 * Define el valor de la propiedad id.
-	 * 
-	 * @param value allowed object is {@link String }
-	 * 
-	 */
-	public void setId(String value) {
-		this.id = value;
-	}
-
-	@Override
-	public String toString() {
-		// TODO Auto-generated method stub
-		return "\nEvento Cultural = \n"
-				+ "\tId: " + this.id + "\n"
-				+ "\tNombre: " + this.nombre + "\n"
-				+ "\tFecha Inicio: " + this.fechaInicio+ "\n"+
-		    	"\tFecha Final: " + this.fechaFin+"\n"+
-		    	"\tLocalización: " + this.localizacion+"\n"+
-		    	"\tCoordenada latitud: " + this.coordenadaLatitud+"\n"+
-		    	"\tCoordenada longitud: " + this.coordenadaLongitud+"\n"+
-		    	"\tResumen: " + this.resumen+"\n"+
-		    	"\tUrl: " + this.url+"\n"+
-		    	"\tUrl Wiki: " + this.urlWikipedia+"\n";
-	}
+    /**
+     * Define el valor de la propiedad id.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setId(String value) {
+        this.id = value;
+    }
 
 }

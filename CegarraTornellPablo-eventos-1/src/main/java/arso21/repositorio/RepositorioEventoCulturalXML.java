@@ -16,7 +16,7 @@ import es.um.eventocultural.EventoCultural;
 
 public class RepositorioEventoCulturalXML implements RepositorioEventoCultural {
 
-	public final static String DIRECTORIO_EVENTO = "xmlEventosCulturales/";
+	public final static String DIRECTORIO_EVENTO = "xmlEventosRepositorio/";
 
 	static {
 

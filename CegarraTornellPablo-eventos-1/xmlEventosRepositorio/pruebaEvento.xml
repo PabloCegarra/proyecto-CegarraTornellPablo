@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <eventoCultural id="11203871"
-	xmlns="http://www.um.es/EventoCultural"
+	xmlns="http://www.example.org/EventoCultural"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.um.es/EventoCultural EventoCultural.xsd ">
+	xsi:schemaLocation="http://www.example.org/EventoCultural EventoCultural.xsd ">
 	<nombre>A nosotros nos daba igual</nombre>
 	<fechaInicio>2021-06-23 00:00:00.0</fechaInicio>
 	<fechaFin>2021-07-04 23:59:00.0</fechaFin>
 	<resumen></resumen>
-	<url>http://www.madrid.es/sites/v/index.jsp?vgnextchannel=ca9671ee4a9eb410VgnVCM100000171f5a0aRCRD&amp;vgnextoid=becc8d9025e53710VgnVCM1000001d4a900aRCRD</url>
+	<url>http://www.madrid.es/sites/v/index.jsp?vgnextchannel=ca9671ee4a9eb410VgnVCM100000171f5a0aRCRD&amp;vgnextoid=becc8d9025e53710VgnVCM1000001d4a900aRCRD
+	</url>
 	<localizacion>Naves Español en Matadero</localizacion>
 	<coordenadaLongitud>
 		-3.697247685884226
