@@ -5,6 +5,7 @@ import java.io.FileWriter;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.math.BigInteger;
+import java.net.URL;
 
 import javax.json.Json;
 import javax.json.JsonArray;
@@ -15,10 +16,15 @@ import javax.json.stream.JsonGenerator;
 import arso21.repositorio.RepositorioEventoCulturalXML;
 import es.um.eventocultural.EventoCultural;
 import es.um.eventocultural.TipoActuaciones;
+import es.um.eventocultural.TipoGoogleBook;
 
 public class JsonFuncionalidad {
 
+	public final static String RUTA_GEONAMES = "http://api.geonames.org/findNearbyWikipedia?";
+
 	public static void main(String[] args) throws Exception {
+
+		String urlGeoname = "";
 
 		EventoCultural eventoObject = new EventoCultural();
 
@@ -45,6 +51,12 @@ public class JsonFuncionalidad {
 				actuacionesObject.setIntervalo(BigInteger.valueOf(actuaciones.getInt("interval")));
 				eventoObject.setActuaciones(actuacionesObject);
 			}
+			if (campo.containsKey("@type")) {
+				String urlTipo= campo.getString("@type");
+				String[] parts = urlTipo.split("/");
+				String tipo = parts[parts.length-1];
+				eventoObject.setTipo(tipo);
+			}
 
 			if (campo.containsKey("location")) {
 				JsonObject coordenadas = campo.getJsonObject("location");
@@ -52,8 +64,22 @@ public class JsonFuncionalidad {
 				eventoObject.setCoordenadaLongitud(coordenadas.getJsonNumber("longitude").doubleValue());
 			}
 		}
+		TipoGoogleBook google = new TipoGoogleBook();
+		google.setLinkInfo("link prueba");
+		google.setTitulo("titulo prueba");
+		google.getIdentifier().add("1");
+		google.getIdentifier().add("2");
+		eventoObject.getGoogleBooks().add(google);
+		
 		RepositorioEventoCulturalXML repositorio = new RepositorioEventoCulturalXML();
 		repositorio.add(eventoObject);
+
+		if (eventoObject.getCoordenadaLatitud() != null && eventoObject.getCoordenadaLongitud() != null) {
+			urlGeoname = RUTA_GEONAMES + "lat=" + eventoObject.getCoordenadaLatitud() + "&lng="
+					+ eventoObject.getCoordenadaLongitud() + "&lang=es&username=arso";
+		}
+		System.out.println("URL GEONAMES: " + urlGeoname); 
+		System.out.println("Fichero generado en xmlEventosRepositorio: " + eventoObject.getId() + ".xml");
 
 	}
 

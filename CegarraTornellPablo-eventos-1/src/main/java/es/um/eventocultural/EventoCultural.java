@@ -2,12 +2,14 @@
 // Este archivo ha sido generado por la arquitectura JavaTM para la implantación de la referencia de enlace (JAXB) XML v2.3.0 
 // Visite <a href="https://javaee.github.io/jaxb-v2/">https://javaee.github.io/jaxb-v2/</a> 
 // Todas las modificaciones realizadas en este archivo se perderán si se vuelve a compilar el esquema de origen. 
-// Generado el: 2021.04.11 a las 01:53:27 AM CEST 
+// Generado el: 2021.04.12 a las 01:46:54 AM CEST 
 //
 
 
 package es.um.eventocultural;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -28,6 +30,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
  *         &lt;element name="nombre" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="tipo" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *         &lt;element name="fechaInicio" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *         &lt;element name="fechaFin" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *         &lt;element name="resumen" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
@@ -37,6 +40,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="coordenadaLongitud" type="{http://www.um.es/EventoCultural}tipoCoordenada" minOccurs="0"/&gt;
  *         &lt;element name="coordenadaLatitud" type="{http://www.um.es/EventoCultural}tipoCoordenada" minOccurs="0"/&gt;
  *         &lt;element name="actuaciones" type="{http://www.um.es/EventoCultural}tipoActuaciones" minOccurs="0"/&gt;
+ *         &lt;element name="googleBooks" type="{http://www.um.es/EventoCultural}tipoGoogleBook" maxOccurs="unbounded" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *       &lt;attribute name="id" use="required" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" /&gt;
  *     &lt;/restriction&gt;
@@ -49,6 +53,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
     "nombre",
+    "tipo",
     "fechaInicio",
     "fechaFin",
     "resumen",
@@ -57,13 +62,16 @@ import javax.xml.bind.annotation.XmlType;
     "localizacion",
     "coordenadaLongitud",
     "coordenadaLatitud",
-    "actuaciones"
+    "actuaciones",
+    "googleBooks"
 })
 @XmlRootElement(name = "eventoCultural")
 public class EventoCultural {
 
     @XmlElement(required = true)
     protected String nombre;
+    @XmlElement(required = true)
+    protected String tipo;
     @XmlElement(required = true)
     protected String fechaInicio;
     @XmlElement(required = true)
@@ -78,6 +86,7 @@ public class EventoCultural {
     protected Double coordenadaLongitud;
     protected Double coordenadaLatitud;
     protected TipoActuaciones actuaciones;
+    protected List<TipoGoogleBook> googleBooks;
     @XmlAttribute(name = "id", required = true)
     @XmlSchemaType(name = "anySimpleType")
     protected String id;
@@ -104,6 +113,30 @@ public class EventoCultural {
      */
     public void setNombre(String value) {
         this.nombre = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad tipo.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getTipo() {
+        return tipo;
+    }
+
+    /**
+     * Define el valor de la propiedad tipo.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setTipo(String value) {
+        this.tipo = value;
     }
 
     /**
@@ -320,6 +353,35 @@ public class EventoCultural {
      */
     public void setActuaciones(TipoActuaciones value) {
         this.actuaciones = value;
+    }
+
+    /**
+     * Gets the value of the googleBooks property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the googleBooks property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getGoogleBooks().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link TipoGoogleBook }
+     * 
+     * 
+     */
+    public List<TipoGoogleBook> getGoogleBooks() {
+        if (googleBooks == null) {
+            googleBooks = new ArrayList<TipoGoogleBook>();
+        }
+        return this.googleBooks;
     }
 
     /**

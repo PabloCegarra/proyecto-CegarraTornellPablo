@@ -5,7 +5,7 @@
 Este archivo ha sido generado por la arquitectura JavaTM para la implantación de la referencia de enlace (JAXB) XML v2.3.0 
 Visite <a href="https://javaee.github.io/jaxb-v2/">https://javaee.github.io/jaxb-v2/</a> 
 Todas las modificaciones realizadas en este archivo se perderán si se vuelve a compilar el esquema de origen. 
-Generado el: 2021.04.11 a las 01:53:27 AM CEST 
+Generado el: 2021.04.12 a las 01:46:54 AM CEST 
 
   -->
   <bindings xmlns:tns="http://www.um.es/EventoCultural" if-exists="true" scd="x-schema::tns">
@@ -17,6 +17,9 @@ Generado el: 2021.04.11 a las 01:53:27 AM CEST
     </bindings>
     <bindings if-exists="true" scd="~tns:tipoActuaciones">
       <class ref="es.um.eventocultural.TipoActuaciones"/>
+    </bindings>
+    <bindings if-exists="true" scd="~tns:tipoGoogleBook">
+      <class ref="es.um.eventocultural.TipoGoogleBook"/>
     </bindings>
   </bindings>
 </bindings>
