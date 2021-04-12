@@ -14,7 +14,7 @@
 				<element name="resumen" type="string" />
 				<element name="url" minOccurs="1" type="string" />
 				<element name="urlWikipedia" minOccurs="0" type="string" />
-				<element name="localizacion" minOccurs="1" type="string" />
+				<element name="localizacion" minOccurs="0" type="string" />
 				<element name="coordenadaLongitud" type="tns:tipoCoordenada"
 					minOccurs="0" />
 				<element name="coordenadaLatitud" type="tns:tipoCoordenada"

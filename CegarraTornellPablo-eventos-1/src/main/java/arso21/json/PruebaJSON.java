@@ -1,4 +1,4 @@
-package arso21.jsonController;
+package arso21.json;
 
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -18,7 +18,7 @@ import es.um.eventocultural.EventoCultural;
 import es.um.eventocultural.TipoActuaciones;
 import es.um.eventocultural.TipoGoogleBook;
 
-public class JsonFuncionalidad {
+public class PruebaJSON {
 
 	public final static String RUTA_GEONAMES = "http://api.geonames.org/findNearbyWikipedia?";
 

@@ -38,12 +38,11 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
-import arso21.controller.EventosController;
-import arso21.controller.EventosControllerImpl;
 import arso21.repositorio.EntidadNoEncontrada;
 import arso21.repositorio.FactoriaRepositorioEventoCultural;
 import arso21.repositorio.RepositorioEventoCultural;
 import arso21.repositorio.RepositorioException;
+import arso21.sax.EventoResumen;
 import arso21.sax.ListadoEventos;
 import arso21.sax.ManejadorEventos;
 import es.um.eventocultural.EventoCultural;
@@ -61,7 +60,6 @@ public class EventosServiceImpl implements IEventosService {
 
 	private static EventosServiceImpl instancia;
 
-	private EventosController controladorEventos = new EventosControllerImpl();
 
 	public static EventosServiceImpl getInstancia() {
 
@@ -92,8 +90,8 @@ public class EventosServiceImpl implements IEventosService {
 
 	@Override
 	public ListadoEventos findListadoEventos() throws Exception {
-		String result = "";
-		result = llamarServicio(URI_EVENTOS_MADRID);
+		String result = "a";
+		//result = llamarServicio(URI_EVENTOS_MADRID);
 
 		ListadoEventos listadoEventos = new ListadoEventos();
 
@@ -112,8 +110,23 @@ public class EventosServiceImpl implements IEventosService {
 
 		try {
 			ManejadorEventos manejador = new ManejadorEventos();
-			analizador.parse(new InputSource(new StringReader(xmlStr)), manejador);
+			//analizador.parse(new InputSource(new StringReader(xmlStr)), manejador);
+			analizador.parse("xml/agenda.xml", manejador);
 			listadoEventos = manejador.getListadoEventos();
+			int contador = 0;
+			for(EventoResumen evento : listadoEventos.getEventos()) {
+				contador++;
+				System.out.println("Evento Nº: " + contador);
+				System.out.println("\t" + evento.getId());
+				System.out.println("\t" + evento.getTitulo());
+				System.out.println("\t" + evento.getUrl());
+				System.out.println("\t" + evento.getFechaInicio());
+				System.out.println("\t" + evento.getDescripcion());
+				System.out.println("\t" + evento.getTipo());
+
+
+			}
+			System.out.println("Numero de eventos: " + listadoEventos.getEventos().size());
 
 		} catch (IOException e) {
 			System.out.println("El documento no ha podido ser leído");
@@ -156,8 +169,9 @@ public class EventosServiceImpl implements IEventosService {
 
 		EventoCultural evento = eventoCultural;
 		List<String> listaTitulos = getListaTitulosLibros(eventoCultural);
-		String urlGoogle = URI_GOOGLE_BOOKS;
+
 		for (String titulo : listaTitulos) {
+			String urlGoogle = URI_GOOGLE_BOOKS;
 			String encodeStr = URLEncoder.encode(titulo, StandardCharsets.UTF_8.name());
 			urlGoogle+= encodeStr + "&start-index=1&max-results=5";
 			
@@ -175,8 +189,9 @@ public class EventosServiceImpl implements IEventosService {
 			consulta = xpath.compile("/feed/entry");
 			resultado = (NodeList) consulta.evaluate(documento, XPathConstants.NODESET);
 			// Recorro los resultados
+			TipoGoogleBook google = new TipoGoogleBook();
 			for (int i = 0; i < resultado.getLength(); i++) {
-				TipoGoogleBook google = new TipoGoogleBook();
+				google = new TipoGoogleBook();
 				NodeList nodeListEntry;
 
 				// Recogemos el titulo del libro
@@ -189,7 +204,7 @@ public class EventosServiceImpl implements IEventosService {
 						.compile("/feed/entry/link[contains(@rel, 'http://schemas.google.com/books/2008/info')]");
 				nodeListEntry = (NodeList) consulta.evaluate(documento, XPathConstants.NODESET);
 				element = (Element) nodeListEntry.item(0);
-				google.setLinkInfo(element.getTextContent());
+				google.setLinkInfo(element.getAttribute("href"));
 
 				// Recogemos los identificadores del libro
 				consulta = xpath.compile("/feed/entry/identifier");
@@ -198,8 +213,8 @@ public class EventosServiceImpl implements IEventosService {
 					element = (Element) nodeListEntry.item(x);
 					google.getIdentifier().add(element.getTextContent());
 				}
-				evento.getGoogleBooks().add(google);
 			}
+			evento.getGoogleBooks().add(google);
 		}
 		return evento;
 	}
@@ -211,25 +226,26 @@ public class EventosServiceImpl implements IEventosService {
 		if (evento.getCoordenadaLatitud() != null && evento.getCoordenadaLongitud() != null) {
 			urlGeoname = URL_GEONAMES + "lat=" + evento.getCoordenadaLatitud() + "&lng="
 					+ evento.getCoordenadaLongitud() + "&lang=es&username=arso";
-		}
-		String resultadoXML = llamarServicio(urlGeoname);
+			String resultadoXML = llamarServicio(urlGeoname);
 
-		DocumentBuilderFactory factoria = DocumentBuilderFactory.newInstance();
-		DocumentBuilder analizador = factoria.newDocumentBuilder();
-		Document documento = analizador.parse(new InputSource(new StringReader(resultadoXML)));
+			DocumentBuilderFactory factoria = DocumentBuilderFactory.newInstance();
+			DocumentBuilder analizador = factoria.newDocumentBuilder();
+			Document documento = analizador.parse(new InputSource(new StringReader(resultadoXML)));
 
-		NodeList nodos = documento.getElementsByTagName("entry");
-		for (int i = 0; i < nodos.getLength(); i++) {
-			Element entrada = (Element) nodos.item(i);
-			if (entrada.getNodeType() == Node.ELEMENT_NODE) {
-				Node nodo;
-				if (entrada.getElementsByTagName("wikipediaUrl") != null) {
-					nodo = entrada.getElementsByTagName("wikipediaUrl").item(0);
-					evento.setUrlWikipedia(nodo.getTextContent());
+			NodeList nodos = documento.getElementsByTagName("entry");
+			for (int i = 0; i < nodos.getLength(); i++) {
+				Element entrada = (Element) nodos.item(i);
+				if (entrada.getNodeType() == Node.ELEMENT_NODE) {
+					Node nodo;
+					if (entrada.getElementsByTagName("wikipediaUrl") != null) {
+						nodo = entrada.getElementsByTagName("wikipediaUrl").item(0);
+						evento.setUrlWikipedia(nodo.getTextContent());
+					}
 				}
-			}
 
+			}
 		}
+
 		return evento;
 	}
 
@@ -246,7 +262,8 @@ public class EventosServiceImpl implements IEventosService {
 			eventoObject.setFechaInicio(campo.getString("dtstart"));
 			eventoObject.setFechaFin(campo.getString("dtend"));
 			eventoObject.setUrl(campo.getString("link"));
-			eventoObject.setLocalizacion(campo.getString("event-location"));
+			if (campo.containsKey("event-location"))
+				eventoObject.setLocalizacion(campo.getString("event-location"));
 			if (campo.containsKey("description"))
 				eventoObject.setResumen(campo.getString("description"));
 
@@ -271,12 +288,6 @@ public class EventosServiceImpl implements IEventosService {
 				eventoObject.setCoordenadaLongitud(coordenadas.getJsonNumber("longitude").doubleValue());
 			}
 		}
-		TipoGoogleBook google = new TipoGoogleBook();
-		google.setLinkInfo("link prueba");
-		google.setTitulo("titulo prueba");
-		google.getIdentifier().add("1");
-		google.getIdentifier().add("2");
-		eventoObject.getGoogleBooks().add(google);
 		return eventoObject;
 	}
 

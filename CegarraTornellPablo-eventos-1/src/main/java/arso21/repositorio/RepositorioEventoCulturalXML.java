@@ -10,7 +10,6 @@ import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
 import arso21.repositorio.utils.Utils;
-import arso21.sax.EventoResumen;
 import es.um.eventocultural.EventoCultural;
 
 

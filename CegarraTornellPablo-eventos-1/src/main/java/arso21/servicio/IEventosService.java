@@ -19,4 +19,6 @@ public interface IEventosService {
 	
 	void removeEvento(String id) throws RepositorioException, EntidadNoEncontrada;
 
+	void borrarRepositorio();
+
 }

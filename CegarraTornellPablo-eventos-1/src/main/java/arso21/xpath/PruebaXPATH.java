@@ -18,7 +18,7 @@ import es.um.eventocultural.TipoGoogleBook;
 
 
 
-public class main {
+public class PruebaXPATH {
 		public static void main(String[] args) throws Exception{
 			
 			List<TipoGoogleBook> googleList = new LinkedList<TipoGoogleBook>();

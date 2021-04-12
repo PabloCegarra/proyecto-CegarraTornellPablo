@@ -1,12 +1,10 @@
 package arso21.repositorio;
 
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import es.um.eventocultural.EventoCultural;
 
-public class TestRepositorio {
+public class PruebaRepositorio {
 
 	
 	public static void main(String[] args) throws Exception {
