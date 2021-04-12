@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.StringReader;
-import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -25,7 +24,6 @@ import javax.json.JsonObject;
 import javax.json.JsonReader;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 import javax.xml.xpath.XPath;
@@ -303,6 +301,10 @@ public class EventosServiceImpl implements IEventosService {
 		EventoCultural evento = repositorio.getById(id);
 
 		repositorio.delete(evento);
+	}
+	
+	public void borrarRepositorio() {
+		repositorio.borrarBBDD();
 	}
 
 }

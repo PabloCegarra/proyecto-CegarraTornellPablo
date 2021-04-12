@@ -1,6 +1,7 @@
 package arso21.repositorio;
 
 import java.io.File;
+import java.io.FileFilter;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -158,6 +159,18 @@ public class RepositorioEventoCulturalXML implements RepositorioEventoCultural {
 		}
 		
 		return resultado;
+	}
+	
+	public void borrarBBDD() {
+	    File[] archivos = new File(DIRECTORIO_EVENTO).listFiles(((new FileFilter() {
+	        public boolean accept(File archivo) {
+	            if (archivo.isFile())
+	                return archivo.getName().endsWith(".xml");
+	            return false;
+	        }
+	    })));
+	    for (File archivo : archivos)
+	        archivo.delete();
 	}
 
 }

@@ -17,4 +17,6 @@ public interface Repositorio <T, K> {
 	List<T> getAll() throws RepositorioException;
 
 	List<K> getIds();
+	
+	void borrarBBDD();
 }
