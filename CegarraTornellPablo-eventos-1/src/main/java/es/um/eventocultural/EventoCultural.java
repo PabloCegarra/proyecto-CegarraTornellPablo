@@ -2,7 +2,7 @@
 // Este archivo ha sido generado por la arquitectura JavaTM para la implantación de la referencia de enlace (JAXB) XML v2.3.0 
 // Visite <a href="https://javaee.github.io/jaxb-v2/">https://javaee.github.io/jaxb-v2/</a> 
 // Todas las modificaciones realizadas en este archivo se perderán si se vuelve a compilar el esquema de origen. 
-// Generado el: 2021.04.12 a las 04:44:53 PM CEST 
+// Generado el: 2021.06.03 a las 11:46:34 AM CEST 
 //
 
 
@@ -17,6 +17,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
@@ -31,16 +32,16 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;sequence&gt;
  *         &lt;element name="nombre" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *         &lt;element name="tipo" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
- *         &lt;element name="fechaInicio" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
- *         &lt;element name="fechaFin" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="fechaInicio" type="{http://www.w3.org/2001/XMLSchema}date"/&gt;
+ *         &lt;element name="fechaFin" type="{http://www.w3.org/2001/XMLSchema}date"/&gt;
  *         &lt;element name="resumen" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
- *         &lt;element name="url" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
- *         &lt;element name="urlWikipedia" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="url" type="{http://www.w3.org/2001/XMLSchema}anyURI"/&gt;
  *         &lt;element name="localizacion" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="coordenadaLongitud" type="{http://www.um.es/EventoCultural}tipoCoordenada" minOccurs="0"/&gt;
  *         &lt;element name="coordenadaLatitud" type="{http://www.um.es/EventoCultural}tipoCoordenada" minOccurs="0"/&gt;
  *         &lt;element name="actuaciones" type="{http://www.um.es/EventoCultural}tipoActuaciones" minOccurs="0"/&gt;
  *         &lt;element name="googleBooks" type="{http://www.um.es/EventoCultural}tipoGoogleBook" maxOccurs="unbounded" minOccurs="0"/&gt;
+ *         &lt;element name="sitiosInteres" type="{http://www.um.es/EventoCultural}tipoSitiosInteres" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *       &lt;attribute name="id" use="required" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" /&gt;
  *     &lt;/restriction&gt;
@@ -58,12 +59,12 @@ import javax.xml.bind.annotation.XmlType;
     "fechaFin",
     "resumen",
     "url",
-    "urlWikipedia",
     "localizacion",
     "coordenadaLongitud",
     "coordenadaLatitud",
     "actuaciones",
-    "googleBooks"
+    "googleBooks",
+    "sitiosInteres"
 })
 @XmlRootElement(name = "eventoCultural")
 public class EventoCultural {
@@ -73,19 +74,22 @@ public class EventoCultural {
     @XmlElement(required = true)
     protected String tipo;
     @XmlElement(required = true)
-    protected String fechaInicio;
+    @XmlSchemaType(name = "date")
+    protected XMLGregorianCalendar fechaInicio;
     @XmlElement(required = true)
-    protected String fechaFin;
+    @XmlSchemaType(name = "date")
+    protected XMLGregorianCalendar fechaFin;
     @XmlElement(required = true)
     protected String resumen;
     @XmlElement(required = true)
+    @XmlSchemaType(name = "anyURI")
     protected String url;
-    protected String urlWikipedia;
     protected String localizacion;
     protected Double coordenadaLongitud;
     protected Double coordenadaLatitud;
     protected TipoActuaciones actuaciones;
     protected List<TipoGoogleBook> googleBooks;
+    protected TipoSitiosInteres sitiosInteres;
     @XmlAttribute(name = "id", required = true)
     @XmlSchemaType(name = "anySimpleType")
     protected String id;
@@ -143,10 +147,10 @@ public class EventoCultural {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link XMLGregorianCalendar }
      *     
      */
-    public String getFechaInicio() {
+    public XMLGregorianCalendar getFechaInicio() {
         return fechaInicio;
     }
 
@@ -155,10 +159,10 @@ public class EventoCultural {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link XMLGregorianCalendar }
      *     
      */
-    public void setFechaInicio(String value) {
+    public void setFechaInicio(XMLGregorianCalendar value) {
         this.fechaInicio = value;
     }
 
@@ -167,10 +171,10 @@ public class EventoCultural {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link XMLGregorianCalendar }
      *     
      */
-    public String getFechaFin() {
+    public XMLGregorianCalendar getFechaFin() {
         return fechaFin;
     }
 
@@ -179,10 +183,10 @@ public class EventoCultural {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link XMLGregorianCalendar }
      *     
      */
-    public void setFechaFin(String value) {
+    public void setFechaFin(XMLGregorianCalendar value) {
         this.fechaFin = value;
     }
 
@@ -232,30 +236,6 @@ public class EventoCultural {
      */
     public void setUrl(String value) {
         this.url = value;
-    }
-
-    /**
-     * Obtiene el valor de la propiedad urlWikipedia.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getUrlWikipedia() {
-        return urlWikipedia;
-    }
-
-    /**
-     * Define el valor de la propiedad urlWikipedia.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setUrlWikipedia(String value) {
-        this.urlWikipedia = value;
     }
 
     /**
@@ -381,6 +361,30 @@ public class EventoCultural {
             googleBooks = new ArrayList<TipoGoogleBook>();
         }
         return this.googleBooks;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad sitiosInteres.
+     * 
+     * @return
+     *     possible object is
+     *     {@link TipoSitiosInteres }
+     *     
+     */
+    public TipoSitiosInteres getSitiosInteres() {
+        return sitiosInteres;
+    }
+
+    /**
+     * Define el valor de la propiedad sitiosInteres.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link TipoSitiosInteres }
+     *     
+     */
+    public void setSitiosInteres(TipoSitiosInteres value) {
+        this.sitiosInteres = value;
     }
 
     /**

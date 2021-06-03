@@ -6,14 +6,17 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.math.BigInteger;
 import java.net.URL;
+import java.util.Date;
 
 import javax.json.Json;
 import javax.json.JsonArray;
 import javax.json.JsonObject;
 import javax.json.JsonReader;
 import javax.json.stream.JsonGenerator;
+import javax.xml.datatype.XMLGregorianCalendar;
 
 import arso21.repositorio.RepositorioEventoCulturalXML;
+import arso21.repositorio.utils.Utils;
 import es.um.eventocultural.EventoCultural;
 import es.um.eventocultural.TipoActuaciones;
 import es.um.eventocultural.TipoGoogleBook;
@@ -36,8 +39,13 @@ public class PruebaJSON {
 		for (JsonObject campo : contenidoEvento.getValuesAs(JsonObject.class)) {
 			eventoObject.setId(campo.getString("id"));
 			eventoObject.setNombre(campo.getString("title"));
-			eventoObject.setFechaInicio(campo.getString("dtstart"));
-			eventoObject.setFechaFin(campo.getString("dtend"));
+			
+			Date date =  Utils.dateFromString(campo.getString("dtstart"));
+			XMLGregorianCalendar dateXML = Utils.createFecha(date);
+			eventoObject.setFechaInicio(dateXML);
+			date =  Utils.dateFromString(campo.getString("dtend"));
+			dateXML = Utils.createFecha(date);
+			eventoObject.setFechaFin(dateXML);
 			eventoObject.setUrl(campo.getString("link"));
 			eventoObject.setLocalizacion(campo.getString("event-location"));
 			if (campo.containsKey("description"))

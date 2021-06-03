@@ -8,26 +8,25 @@
 
 package es.um.eventocultural;
 
-import java.math.BigInteger;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para tipoActuaciones complex type.
+ * <p>Clase Java para tipoSitiosInteres complex type.
  * 
  * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
- * &lt;complexType name="tipoActuaciones"&gt;
+ * &lt;complexType name="tipoSitiosInteres"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="frecuencia" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
- *         &lt;element name="dias" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
- *         &lt;element name="intervalo" type="{http://www.w3.org/2001/XMLSchema}integer"/&gt;
+ *         &lt;element name="titulo" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="resumen" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="urlWikipedia" type="{http://www.w3.org/2001/XMLSchema}anyURI" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -37,90 +36,88 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "tipoActuaciones", propOrder = {
-    "frecuencia",
-    "dias",
-    "intervalo"
+@XmlType(name = "tipoSitiosInteres", propOrder = {
+    "titulo",
+    "resumen",
+    "urlWikipedia"
 })
-public class TipoActuaciones {
+public class TipoSitiosInteres {
 
-    @XmlElement(required = true)
-    protected String frecuencia;
-    @XmlElement(required = true)
-    protected String dias;
-    @XmlElement(required = true)
-    protected BigInteger intervalo;
+    protected String titulo;
+    protected String resumen;
+    @XmlSchemaType(name = "anyURI")
+    protected String urlWikipedia;
 
     /**
-     * Obtiene el valor de la propiedad frecuencia.
+     * Obtiene el valor de la propiedad titulo.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getFrecuencia() {
-        return frecuencia;
+    public String getTitulo() {
+        return titulo;
     }
 
     /**
-     * Define el valor de la propiedad frecuencia.
+     * Define el valor de la propiedad titulo.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setFrecuencia(String value) {
-        this.frecuencia = value;
+    public void setTitulo(String value) {
+        this.titulo = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad dias.
+     * Obtiene el valor de la propiedad resumen.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getDias() {
-        return dias;
+    public String getResumen() {
+        return resumen;
     }
 
     /**
-     * Define el valor de la propiedad dias.
+     * Define el valor de la propiedad resumen.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setDias(String value) {
-        this.dias = value;
+    public void setResumen(String value) {
+        this.resumen = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad intervalo.
+     * Obtiene el valor de la propiedad urlWikipedia.
      * 
      * @return
      *     possible object is
-     *     {@link BigInteger }
+     *     {@link String }
      *     
      */
-    public BigInteger getIntervalo() {
-        return intervalo;
+    public String getUrlWikipedia() {
+        return urlWikipedia;
     }
 
     /**
-     * Define el valor de la propiedad intervalo.
+     * Define el valor de la propiedad urlWikipedia.
      * 
      * @param value
      *     allowed object is
-     *     {@link BigInteger }
+     *     {@link String }
      *     
      */
-    public void setIntervalo(BigInteger value) {
-        this.intervalo = value;
+    public void setUrlWikipedia(String value) {
+        this.urlWikipedia = value;
     }
 
 }

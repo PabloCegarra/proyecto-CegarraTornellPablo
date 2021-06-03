@@ -13,6 +13,7 @@ import java.net.URLConnection;
 import java.net.URLEncoder;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -22,6 +23,7 @@ import javax.json.Json;
 import javax.json.JsonArray;
 import javax.json.JsonObject;
 import javax.json.JsonReader;
+import javax.xml.datatype.XMLGregorianCalendar;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.SAXParser;
@@ -42,12 +44,14 @@ import arso21.repositorio.EntidadNoEncontrada;
 import arso21.repositorio.FactoriaRepositorioEventoCultural;
 import arso21.repositorio.RepositorioEventoCultural;
 import arso21.repositorio.RepositorioException;
+import arso21.repositorio.utils.Utils;
 import arso21.sax.EventoResumen;
 import arso21.sax.ListadoEventos;
 import arso21.sax.ManejadorEventos;
 import es.um.eventocultural.EventoCultural;
 import es.um.eventocultural.TipoActuaciones;
 import es.um.eventocultural.TipoGoogleBook;
+import es.um.eventocultural.TipoSitiosInteres;
 
 public class EventosServiceImpl implements IEventosService {
 
@@ -222,6 +226,7 @@ public class EventosServiceImpl implements IEventosService {
 	private EventoCultural procesarGeoname(EventoCultural eventoCultural) throws Exception {
 
 		EventoCultural evento = eventoCultural;
+		TipoSitiosInteres sitiosInteres = new TipoSitiosInteres();
 		String urlGeoname = "";
 		if (evento.getCoordenadaLatitud() != null && evento.getCoordenadaLongitud() != null) {
 			urlGeoname = URL_GEONAMES + "lat=" + evento.getCoordenadaLatitud() + "&lng="
@@ -239,7 +244,15 @@ public class EventosServiceImpl implements IEventosService {
 					Node nodo;
 					if (entrada.getElementsByTagName("wikipediaUrl") != null) {
 						nodo = entrada.getElementsByTagName("wikipediaUrl").item(0);
-						evento.setUrlWikipedia(nodo.getTextContent());
+						sitiosInteres.setUrlWikipedia(nodo.getTextContent());
+					}
+					if (entrada.getElementsByTagName("title") != null) {
+						nodo = entrada.getElementsByTagName("title").item(0);
+						sitiosInteres.setTitulo(nodo.getTextContent());
+					}
+					if (entrada.getElementsByTagName("summary") != null) {
+						nodo = entrada.getElementsByTagName("summary").item(0);
+						sitiosInteres.setResumen(nodo.getTextContent());
 					}
 				}
 
@@ -259,8 +272,14 @@ public class EventosServiceImpl implements IEventosService {
 		for (JsonObject campo : contenidoEvento.getValuesAs(JsonObject.class)) {
 			eventoObject.setId(campo.getString("id"));
 			eventoObject.setNombre(campo.getString("title"));
-			eventoObject.setFechaInicio(campo.getString("dtstart"));
-			eventoObject.setFechaFin(campo.getString("dtend"));
+			Date date =  Utils.dateFromString(campo.getString("dtstart"));
+			XMLGregorianCalendar dateXML = Utils.createFecha(date);
+			
+			eventoObject.setFechaInicio(dateXML);
+			
+			date =  Utils.dateFromString(campo.getString("dtstart"));
+			dateXML = Utils.createFecha(date);
+			eventoObject.setFechaFin(dateXML);
 			eventoObject.setUrl(campo.getString("link"));
 			if (campo.containsKey("event-location"))
 				eventoObject.setLocalizacion(campo.getString("event-location"));
@@ -291,28 +310,28 @@ public class EventosServiceImpl implements IEventosService {
 		return eventoObject;
 	}
 
-	@Override
-	public String createEvento(EventoCultural evento) throws RepositorioException {
-		return repositorio.add(evento);
-	}
-
-	@Override
-	public void update(EventoCultural evento) throws RepositorioException, EntidadNoEncontrada {
-		repositorio.update(evento);
-	}
-
-	@Override
-	public EventoCultural getEvento(String id) throws RepositorioException, EntidadNoEncontrada {
-		return repositorio.getById(id);
-	}
-
-	@Override
-	public void removeEvento(String id) throws RepositorioException, EntidadNoEncontrada {
-
-		EventoCultural evento = repositorio.getById(id);
-
-		repositorio.delete(evento);
-	}
+//	@Override
+//	public String createEvento(EventoCultural evento) throws RepositorioException {
+//		return repositorio.add(evento);
+//	}
+//
+//	@Override
+//	public void update(EventoCultural evento) throws RepositorioException, EntidadNoEncontrada {
+//		repositorio.update(evento);
+//	}
+//
+//	@Override
+//	public EventoCultural getEvento(String id) throws RepositorioException, EntidadNoEncontrada {
+//		return repositorio.getById(id);
+//	}
+//
+//	@Override
+//	public void removeEvento(String id) throws RepositorioException, EntidadNoEncontrada {
+//
+//		EventoCultural evento = repositorio.getById(id);
+//
+//		repositorio.delete(evento);
+//	}
 	
 	public void borrarRepositorio() {
 		repositorio.borrarBBDD();

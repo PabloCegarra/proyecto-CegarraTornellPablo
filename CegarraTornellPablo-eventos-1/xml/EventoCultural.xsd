@@ -9,11 +9,10 @@
 			<sequence>
 				<element name="nombre" minOccurs="1" type="string" />
 				<element name="tipo" minOccurs="1" type="string" />
-				<element name="fechaInicio" minOccurs="1" type="string" />
-				<element name="fechaFin" minOccurs="1" type="string" />
+				<element name="fechaInicio" minOccurs="1" type="date" />
+				<element name="fechaFin" minOccurs="1" type="date" />
 				<element name="resumen" type="string" />
-				<element name="url" minOccurs="1" type="string" />
-				<element name="urlWikipedia" minOccurs="0" type="string" />
+				<element name="url" minOccurs="1" type="anyURI" />
 				<element name="localizacion" minOccurs="0" type="string" />
 				<element name="coordenadaLongitud" type="tns:tipoCoordenada"
 					minOccurs="0" />
@@ -23,6 +22,7 @@
 					minOccurs="0" />
 				<element name="googleBooks" type="tns:tipoGoogleBook"
 					minOccurs="0" maxOccurs="unbounded" />
+				<element name="sitiosInteres" minOccurs="0" type="tns:tipoSitiosInteres" />
 			</sequence>
 			<attribute name="id" use="required" />
 		</complexType>
@@ -33,6 +33,14 @@
 			<element name="frecuencia" type="string" />
 			<element name="dias" type="string" />
 			<element name="intervalo" type="integer" />
+		</sequence>
+	</complexType>
+	
+	<complexType name="tipoSitiosInteres">
+		<sequence>
+			<element name="titulo" minOccurs="0" type="string" />
+			<element name="resumen" minOccurs="0" type="string" />		
+			<element name="urlWikipedia" minOccurs="0" type="anyURI" />
 		</sequence>
 	</complexType>
 

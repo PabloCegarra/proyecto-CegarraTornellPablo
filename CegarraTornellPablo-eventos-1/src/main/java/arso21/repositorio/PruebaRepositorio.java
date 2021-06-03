@@ -2,6 +2,11 @@ package arso21.repositorio;
 
 
 
+import java.util.Date;
+
+import javax.xml.datatype.XMLGregorianCalendar;
+
+import arso21.repositorio.utils.Utils;
 import es.um.eventocultural.EventoCultural;
 
 public class PruebaRepositorio {
@@ -13,8 +18,11 @@ public class PruebaRepositorio {
 		
 		EventoCultural evento = new EventoCultural();
 		
-		evento.setFechaFin("prueba");
-		evento.setFechaInicio("prueba");
+		
+		Date date =  Utils.dateFromString("2021-03-05");
+		XMLGregorianCalendar dateXML = Utils.createFecha(date);
+		evento.setFechaFin(dateXML);
+		evento.setFechaInicio(dateXML);
 		evento.setId("prueba");
 		evento.setNombre("De 3 a 5 años: 'Hansel y Gretel' y 'Caperucita roja' y  'Hola' y 'eee'");
 		evento.setUrl("prueba");
