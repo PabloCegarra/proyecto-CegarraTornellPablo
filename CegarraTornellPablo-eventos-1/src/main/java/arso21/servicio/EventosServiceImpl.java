@@ -143,10 +143,11 @@ public class EventosServiceImpl implements IEventosService {
 
 	@Override
 	public EventoCultural findInfoEvento(String url) throws Exception {
-		String result = "";
+		//String result = "";
 		EventoCultural evento;
-		result = llamarServicio(url);
-		InputStream inputStream = new ByteArrayInputStream(result.getBytes(Charset.forName("UTF-8")));
+		//result = llamarServicio(url);
+		//InputStream inputStream = new ByteArrayInputStream(result.getBytes(Charset.forName("UTF-8")));
+		InputStream inputStream = new URL(url).openStream();
 		evento = procesarJsonEvento(inputStream);
 
 		evento = procesarGeoname(evento);
@@ -211,7 +212,7 @@ public class EventosServiceImpl implements IEventosService {
 				google.setLinkInfo(element.getAttribute("href"));
 
 				// Recogemos los identificadores del libro
-				consulta = xpath.compile("/feed/entry/identifier");
+				consulta = xpath.compile("/feed/entry["+ (i+1)+"]/identifier");
 				nodeListEntry = (NodeList) consulta.evaluate(documento, XPathConstants.NODESET);
 				for (int x = 0; x < nodeListEntry.getLength(); x++) {
 					element = (Element) nodeListEntry.item(x);
@@ -255,6 +256,7 @@ public class EventosServiceImpl implements IEventosService {
 						sitiosInteres.setResumen(nodo.getTextContent());
 					}
 				}
+				evento.setSitiosInteres(sitiosInteres);
 
 			}
 		}

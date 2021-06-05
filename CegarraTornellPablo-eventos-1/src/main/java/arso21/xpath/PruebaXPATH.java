@@ -59,11 +59,11 @@ public class PruebaXPATH {
 				System.out.println( i + "-> Url: " + element.getAttribute("href"));
 						
 				// Recogemos los identificadores del libro
-				consulta = xpath.compile("/feed/entry/identifier");	
+				consulta = xpath.compile("/feed/entry["+ (i+1) +"]/identifier");	
 				nodeListEntry = (NodeList) consulta.evaluate(documento, XPathConstants.NODESET);
 				for (int x = 0; x < nodeListEntry.getLength(); x++) {
 					element = (Element) nodeListEntry.item(x);
-					System.out.println(x + " Identificador: " + element.getTextContent());
+					System.out.println("\t" +x + " Identificador: " + element.getTextContent());
 					google.getIdentifier().add(element.getTextContent());
 				}
 				googleList.add(google);
