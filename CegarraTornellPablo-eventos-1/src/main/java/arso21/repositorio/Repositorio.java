@@ -18,5 +18,5 @@ public interface Repositorio <T, K> {
 
 	List<K> getIds();
 	
-	void borrarBBDD();
+	//void borrarBBDD();
 }

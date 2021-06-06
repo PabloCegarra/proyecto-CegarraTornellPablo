@@ -336,7 +336,7 @@ public class EventosServiceImpl implements IEventosService {
 //	}
 	
 	public void borrarRepositorio() {
-		repositorio.borrarBBDD();
+		//repositorio.borrarBBDD();
 	}
 
 }
