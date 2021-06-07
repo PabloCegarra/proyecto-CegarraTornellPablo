@@ -2,6 +2,7 @@ package arso21.servicio;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -16,6 +17,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -23,6 +25,9 @@ import javax.json.Json;
 import javax.json.JsonArray;
 import javax.json.JsonObject;
 import javax.json.JsonReader;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Unmarshaller;
 import javax.xml.datatype.XMLGregorianCalendar;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -40,6 +45,7 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
+import arso21.mapeo.RootElement;
 import arso21.repositorio.EntidadNoEncontrada;
 import arso21.repositorio.FactoriaRepositorioEventoCultural;
 import arso21.repositorio.RepositorioEventoCultural;
@@ -60,12 +66,12 @@ public class EventosServiceImpl implements IEventosService {
 	public final static String URI_EVENTO_INFO = "https://datos.madrid.es/egob/catalogo/tipo/evento/";
 	public final static String URI_EVENTOS_MADRID = "https://datos.madrid.es/egob/catalogo/206974-0-agenda-eventos-culturales-100.xml";
 
-	private RepositorioEventoCultural repositorio = FactoriaRepositorioEventoCultural.getRepositorio();
 
 	private static EventosServiceImpl instancia;
+	
 
 
-	public static EventosServiceImpl getInstancia() {
+	public static EventosServiceImpl getInstancia() throws JAXBException {
 
 		if (instancia == null)
 			instancia = new EventosServiceImpl();
@@ -311,29 +317,6 @@ public class EventosServiceImpl implements IEventosService {
 		}
 		return eventoObject;
 	}
-
-//	@Override
-//	public String createEvento(EventoCultural evento) throws RepositorioException {
-//		return repositorio.add(evento);
-//	}
-//
-//	@Override
-//	public void update(EventoCultural evento) throws RepositorioException, EntidadNoEncontrada {
-//		repositorio.update(evento);
-//	}
-//
-//	@Override
-//	public EventoCultural getEvento(String id) throws RepositorioException, EntidadNoEncontrada {
-//		return repositorio.getById(id);
-//	}
-//
-//	@Override
-//	public void removeEvento(String id) throws RepositorioException, EntidadNoEncontrada {
-//
-//		EventoCultural evento = repositorio.getById(id);
-//
-//		repositorio.delete(evento);
-//	}
 	
 	public void borrarRepositorio() {
 		//repositorio.borrarBBDD();

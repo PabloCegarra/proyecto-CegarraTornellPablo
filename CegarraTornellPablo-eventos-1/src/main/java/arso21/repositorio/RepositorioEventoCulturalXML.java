@@ -4,11 +4,14 @@ import java.io.File;
 import java.io.FileFilter;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
+import arso21.mapeo.RootElement;
 import arso21.repositorio.utils.Utils;
 import es.um.eventocultural.EventoCultural;
 
@@ -17,16 +20,42 @@ import es.um.eventocultural.EventoCultural;
 public class RepositorioEventoCulturalXML implements RepositorioEventoCultural {
 
 	public final static String DIRECTORIO_EVENTO = "xmlEventosRepositorio/";
+	
+	private static RootElement mapObject;
+	
+	private static JAXBContext contexto;
 
 	static {
 
 		File directorio = new File(DIRECTORIO_EVENTO);
+		
+		
+		try {
+			contexto = JAXBContext.newInstance(RootElement.class);
+			Unmarshaller unmarshaller = contexto.createUnmarshaller();
+			mapObject = (RootElement) unmarshaller.unmarshal(new File("xml/mapaIndice.xml"));
 
-		if (!directorio.exists())
-			directorio.mkdir();
+			if (!directorio.exists())
+				directorio.mkdir();
+		} catch (JAXBException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	
 	}
 
-	/*** Métodos de apoyo ***/
+	/*** Métodos de apoyo 
+	 * @throws JAXBException ***/
+	
+	protected void actualizarIndice(Map<String, String> mapa) throws JAXBException {
+		RepositorioEventoCulturalXML.mapObject.setMapProperty(mapa);
+		Marshaller marshaller = contexto.createMarshaller();
+		marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);  
+		
+		marshaller.marshal(RepositorioEventoCulturalXML.mapObject, new File("xml/mapaIndice.xml"));
+		
+	}
 
 	protected String getDocumento(String id) {
 
@@ -87,11 +116,24 @@ public class RepositorioEventoCulturalXML implements RepositorioEventoCultural {
 	public String add(EventoCultural evento) throws RepositorioException {
 
 		String id = Utils.createId();
+		
+		
+		//Actualizamos indice de eventos
 
-		evento.setId(id);
-		save(evento);
-
-		return id;
+		Map<String, String> map = mapObject.getMapProperty();
+		
+		if(map.get(evento.getUrl())!= null){
+			return map.get(evento.getUrl());
+		}else{
+			try {
+				evento.setId(id);
+				save(evento);
+				actualizarIndice(map);
+			} catch (JAXBException e) {
+				e.printStackTrace();
+			}
+			return id;
+		}
 	}
 
 	@Override
@@ -110,6 +152,17 @@ public class RepositorioEventoCulturalXML implements RepositorioEventoCultural {
 		if (!checkDocumento(evento.getId()))
 			throw new EntidadNoEncontrada("El evento no existe, id: " + evento.getId());
 
+		//Actualizamos indice de eventos
+		Map<String, String> map = mapObject.getMapProperty();
+		if(map.get(evento.getUrl())!= null){
+			map.remove(evento.getUrl());
+			try {
+				actualizarIndice(map);
+			} catch (JAXBException e) {
+				e.printStackTrace();
+			}
+		}
+		
 		final String documento = getDocumento(evento.getId());
 
 		File fichero = new File(documento);
@@ -171,5 +224,15 @@ public class RepositorioEventoCulturalXML implements RepositorioEventoCultural {
 	    for (File archivo : archivos)
 	        archivo.delete();
 	}
+	
+	@Override
+	public EventoCultural getByURL(String url) throws RepositorioException, EntidadNoEncontrada {
+
+		Map<String, String> map = mapObject.getMapProperty();
+		String id = map.get(url);
+		
+		return load(id);
+	}
+
 
 }

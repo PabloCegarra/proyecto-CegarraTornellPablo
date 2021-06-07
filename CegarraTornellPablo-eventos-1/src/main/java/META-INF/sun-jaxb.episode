@@ -6,9 +6,31 @@
 Este archivo ha sido generado por la arquitectura JavaTM para la implantación de la referencia de enlace (JAXB) XML v2.3.0 
 Visite <a href="https://javaee.github.io/jaxb-v2/">https://javaee.github.io/jaxb-v2/</a> 
 Todas las modificaciones realizadas en este archivo se perderán si se vuelve a compilar el esquema de origen. 
-Generado el: 2021.06.05 a las 11:42:24 PM CEST 
+Generado el: 2021.06.07 a las 12:07:37 AM CEST 
 
   -->
+      
+    <bindings xmlns:tns="http://www.um.es/IndicesEventos" if-exists="true" scd="x-schema::tns">
+            
+        <schemaBindings map="false">
+                  
+            <package name="es.um.indiceseventos"/>
+                
+        </schemaBindings>
+            
+        <bindings if-exists="true" scd="~tns:person">
+                  
+            <class ref="es.um.indiceseventos.Person"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="~tns:gadget">
+                  
+            <class ref="es.um.indiceseventos.Gadget"/>
+                
+        </bindings>
+          
+    </bindings>
       
     <bindings xmlns:tns="http://www.um.es/EventoCultural" if-exists="true" scd="x-schema::tns">
             
