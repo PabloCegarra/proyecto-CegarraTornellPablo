@@ -1,5 +1,8 @@
 package arso21.mongodb;
 
+import java.net.URISyntaxException;
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -11,6 +14,8 @@ import org.bson.codecs.configuration.CodecRegistry;
 import org.bson.codecs.pojo.PojoCodecProvider;
 import org.bson.types.ObjectId;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mongodb.ConnectionString;
 import com.mongodb.MongoClientSettings;
 import com.mongodb.client.MongoClient;
@@ -18,6 +23,10 @@ import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
+import com.rabbitmq.client.AMQP;
+import com.rabbitmq.client.Channel;
+import com.rabbitmq.client.Connection;
+import com.rabbitmq.client.ConnectionFactory;
 
 import arso21.repositorio.EntidadNoEncontrada;
 import arso21.repositorio.RepositorioException;
@@ -77,6 +86,35 @@ public class RepositorioEnlacesFavoritosMongoDB implements RepositorioEnlacesFav
 			throw new RepositorioException("No se ha podido insertar la entidad", e);
 		}
 	}
+	
+	protected String convertToJson(Favorito favoritos) throws JsonProcessingException {
+		ObjectMapper Obj = new ObjectMapper(); 
+		String jsonStr = Obj.writeValueAsString(favoritos); 
+		return jsonStr;
+		
+	}
+	
+	protected void enviarFavoritoCola(String jsonFavorito) throws Exception{
+		ConnectionFactory factory = new ConnectionFactory();
+	    factory.setUri("amqps://trphoxnx:RKQMAjh0jlI6vyZuWn3s2fG1Og5o87Nu@squid.rmq.cloudamqp.com/trphoxnx");
+
+	    Connection connection = factory.newConnection();
+
+	    Channel channel = connection.createChannel();
+	    
+	    String routingKey = "favoritos-key";
+	    String exchange = "amq.direct";
+	    
+        channel.basicPublish(exchange, routingKey, 
+                new AMQP.BasicProperties.Builder()
+                     .contentType("application/json")
+                    .build()                
+                , jsonFavorito.getBytes());
+        
+        channel.close();
+        connection.close();
+		
+	}
 
 	@Override
 	public void addUrlFavorita(String id, Favorito favorito) throws RepositorioException, EntidadNoEncontrada {
@@ -88,6 +126,10 @@ public class RepositorioEnlacesFavoritosMongoDB implements RepositorioEnlacesFav
 
 		try {
 			Set<Favorito> favoritos = enlace.getFavoritos();
+			
+			String jsonFavorito = convertToJson(favorito);
+			
+			enviarFavoritoCola(jsonFavorito);
 
 			favoritos.add(favorito);
 

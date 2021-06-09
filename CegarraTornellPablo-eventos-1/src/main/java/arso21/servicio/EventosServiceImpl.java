@@ -9,11 +9,14 @@ import java.io.InputStreamReader;
 import java.io.StringReader;
 import java.math.BigInteger;
 import java.net.MalformedURLException;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
@@ -45,7 +48,15 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
+import com.rabbitmq.client.AMQP;
+import com.rabbitmq.client.Channel;
+import com.rabbitmq.client.Connection;
+import com.rabbitmq.client.ConnectionFactory;
+import com.rabbitmq.client.DefaultConsumer;
+import com.rabbitmq.client.Envelope;
+
 import arso21.mapeo.RootElement;
+import arso21.rabbitMQ.ConsumerFavoritos;
 import arso21.repositorio.EntidadNoEncontrada;
 import arso21.repositorio.FactoriaRepositorioEventoCultural;
 import arso21.repositorio.RepositorioEventoCultural;
@@ -75,8 +86,32 @@ public class EventosServiceImpl implements IEventosService {
 
 		if (instancia == null)
 			instancia = new EventosServiceImpl();
+		
+		try {
+			inicializarConsumidorFavoritos();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
 		return instancia;
+	}
+	
+	private static void inicializarConsumidorFavoritos() throws Exception{
+		ConnectionFactory factory = new ConnectionFactory();
+	    factory.setUri("amqps://trphoxnx:RKQMAjh0jlI6vyZuWn3s2fG1Og5o87Nu@squid.rmq.cloudamqp.com/trphoxnx");
+
+	    Connection connection = factory.newConnection();
+
+	    Channel channel = connection.createChannel();
+	    
+		boolean autoAck = false;
+		String cola = "arso-favoritos";
+		String etiquetaConsumidor = "arso-fav";
+		
+		ConsumerFavoritos consumer = new ConsumerFavoritos(channel, instancia);
+		
+		channel.basicConsume(cola, autoAck, etiquetaConsumidor, consumer);
+		
 	}
 
 	private String llamarServicio(String url) {

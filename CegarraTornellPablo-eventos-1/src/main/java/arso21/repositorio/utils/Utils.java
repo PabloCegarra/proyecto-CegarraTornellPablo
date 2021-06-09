@@ -34,14 +34,14 @@ public class Utils {
 	
 	public static String formatoFecha(Calendar fecha) {
 		
-		DateFormat formateador = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		DateFormat formateador = new SimpleDateFormat("yyyy-MM-dd");
 		
 		return formateador.format(fecha.getTime());
 	}
 	
 	public static Date dateFromString(String fechaString) {
 		
-		DateFormat formateador = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		DateFormat formateador = new SimpleDateFormat("yyyy-MM-dd");
 		
 		try {
 			return formateador.parse(fechaString);

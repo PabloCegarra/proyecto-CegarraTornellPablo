@@ -128,7 +128,10 @@ public class RepositorioEventoCulturalXML implements RepositorioEventoCultural {
 			try {
 				evento.setId(id);
 				save(evento);
+				map.put(evento.getUrl(), id);
 				actualizarIndice(map);
+				return id;
+				
 			} catch (JAXBException e) {
 				e.printStackTrace();
 			}

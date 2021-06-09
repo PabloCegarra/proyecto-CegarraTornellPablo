@@ -30,16 +30,18 @@ public class PruebaRepositorio {
 
 
 		String id = repositorio.add(evento);
+		
+		
 		System.out.println("Id. del evento: " + id);
 		System.out.println("Mostrando evento de prueba\n");
-		EventoCultural evento2 = repositorio.getById("pruebaEvento");
+		EventoCultural evento2 = repositorio.getById(id);
 		System.out.println(evento2.toString());
 		repositorio.delete(evento);
-		System.out.println("Borrando evento: " + id);
-		
-		System.out.println("Id. del evento: " + id);
-		
-		System.out.println("Fin.");
+//		System.out.println("Borrando evento: " + id);
+//		
+//		System.out.println("Id. del evento: " + id);
+//		
+//		System.out.println("Fin.");
 
 	}
 }

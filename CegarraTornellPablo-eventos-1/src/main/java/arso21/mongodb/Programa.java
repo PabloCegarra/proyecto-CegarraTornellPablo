@@ -15,7 +15,7 @@ public class Programa {
 		// Añadimos una Url favorita
 		Favorito fav1 = new Favorito();
 		fav1.setEtiquetas(new HashSet<String>());
-		fav1.setUrl("UrlFav1");
+		fav1.setUrl("https://datos.madrid.es/egob/catalogo/tipo/evento/11340884.json");
 		Set<String> et1 = new HashSet<String>();
 		et1.add("et1");
 		et1.add("et2");
