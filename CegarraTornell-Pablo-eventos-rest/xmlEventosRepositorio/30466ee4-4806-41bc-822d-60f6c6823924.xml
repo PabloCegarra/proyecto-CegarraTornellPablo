@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<eventoCultural xmlns="http://www.um.es/EventoCultural" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="30466ee4-4806-41bc-822d-60f6c6823924" xsi:schemaLocation="EventoCultural.xsd">
+    <nombre>Activadas. Club de empleo y emprendimiento</nombre>
+    <tipo>CursosTalleres</tipo>
+    <fechaInicio>2021-06-02</fechaInicio>
+    <fechaFin>2021-06-02</fechaFin>
+    <resumen>Estás en búsqueda de empleo? ¿Quieres cambiar de trabajo, formarte o reciclarte? ¿Quieres emprender y no sabes por dónde empezar?  ¡Descubre que no estás sola!  Cada semana nos encontramos en este espacio de sororidad y empoderamiento, para apoyarnos, compartir y acompañarnos en el proceso. ¡No te los pierdas!  Taller presencial. Imprescindible inscripción previa.   Todos los miércoles de 10:30 a 11:30 h.</resumen>
+    <url>http://www.madrid.es/sites/v/index.jsp?vgnextchannel=ca9671ee4a9eb410VgnVCM100000171f5a0aRCRD&amp;vgnextoid=93d1b6e17ad44710VgnVCM1000001d4a900aRCRD</url>
+    <localizacion>Espacio de Igualdad Carme Chacón. Hortaleza</localizacion>
+    <coordenadaLongitud>-3.6501714580414126</coordenadaLongitud>
+    <coordenadaLatitud>40.46155641637237</coordenadaLatitud>
+    <actuaciones>
+        <frecuencia>WEEKLY</frecuencia>
+        <dias></dias>
+        <intervalo>1</intervalo>
+    </actuaciones>
+    <sitiosInteres>
+        <titulo>Estación de Arturo Soria</titulo>
+        <resumen>Arturo Soria es una estación de la línea 4 del Metro de Madrid situada bajo el cruce de las calles Arturo Soria, José Silva y Ulises, en el madrileño distrito de Ciudad Lineal.  (...)</resumen>
+        <urlWikipedia>https://es.wikipedia.org/wiki/Estaci%C3%B3n_de_Arturo_Soria</urlWikipedia>
+    </sitiosInteres>
+</eventoCultural>

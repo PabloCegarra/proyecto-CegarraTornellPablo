@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<eventoCultural xmlns="http://www.um.es/EventoCultural" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="8c1f428f-9eae-4d01-b67e-971803c4c1af" xsi:schemaLocation="EventoCultural.xsd">
+    <nombre>A la luz del candil</nombre>
+    <tipo>DanzaBaile</tipo>
+    <fechaInicio>2021-06-12</fechaInicio>
+    <fechaFin>2021-06-12</fechaFin>
+    <resumen>DANZA.   COMPAÑÍA ESTELA ALONSO,   Espectáculo que pone en valor la famosa “Escuela Bolera”. Danza basada en aquellas bailarinas acostumbradas a los bailes en la corte, de técnica depurada que empezaron a empaparse, gracias a los cafés cantantes, del arranque y brío, así como del expresionismo y raza del mundo del flamenco.  La Escuela Bolera es una danza española con una ejecución técnica rápida y vivaz enriquecida con movimientos corporales más raciales, envueltos con el sonido de las castañuelas y al compás de esos ritmos flamencos que dan lugar a bellísimos bailes repletos de gracia y destreza.    Dirección y coreografía:  Estela Alonso.    Será obligatorio el uso de mascarilla y gel hidroalcohólico en la entrada así como atender en todo momento a las indicaciones del personal para cumplir las medidas preventivas dictadas por las autoridades sanitarias.    AFORO LIMITADO.    ENTRADA GRATUITA PREVIA RESERVA EN:    https://www.eventbrite.es/e/entradas-danza-a-la-luz-del-candil-156537414621         Reserva del 10% de las entradas a mayores de 65 años. Estas entradas se podrán adquirir de forma presencial en el centro cultural correspondiente.</resumen>
+    <url>http://www.madrid.es/sites/v/index.jsp?vgnextchannel=ca9671ee4a9eb410VgnVCM100000171f5a0aRCRD&amp;vgnextoid=88e07faaa6e99710VgnVCM2000001f4a900aRCRD</url>
+    <localizacion>Centro Cultural Moncloa (Moncloa - Aravaca)</localizacion>
+    <coordenadaLongitud>-3.7188765163188293</coordenadaLongitud>
+    <coordenadaLatitud>40.435209393826675</coordenadaLatitud>
+    <actuaciones>
+        <frecuencia>WEEKLY</frecuencia>
+        <dias></dias>
+        <intervalo>1</intervalo>
+    </actuaciones>
+    <sitiosInteres>
+        <titulo>Arco de la Victoria</titulo>
+        <resumen>El Arco de la Victoria de Madrid (popularmente denominado como Puerta de la Moncloa por tener cierta similitud con las puertas de Alcalá y Toledo y también como Arco del Triunfo), es un arco de triunfo construido entre el periodo que va desde el año 1950 a 1956 (...)</resumen>
+        <urlWikipedia>https://es.wikipedia.org/wiki/Arco_de_la_Victoria</urlWikipedia>
+    </sitiosInteres>
+</eventoCultural>

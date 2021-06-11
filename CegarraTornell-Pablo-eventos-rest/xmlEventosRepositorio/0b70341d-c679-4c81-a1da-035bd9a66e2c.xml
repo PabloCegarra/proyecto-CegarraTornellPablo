@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<eventoCultural xmlns="http://www.um.es/EventoCultural" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="0b70341d-c679-4c81-a1da-035bd9a66e2c" xsi:schemaLocation="EventoCultural.xsd">
+    <nombre>100 años de la línea norte-sur</nombre>
+    <tipo></tipo>
+    <fechaInicio>2021-06-10</fechaInicio>
+    <fechaFin>2021-06-10</fechaFin>
+    <resumen></resumen>
+    <url>http://www.madrid.es/sites/v/index.jsp?vgnextchannel=ca9671ee4a9eb410VgnVCM100000171f5a0aRCRD&amp;vgnextoid=76b8df069e5e9710VgnVCM2000001f4a900aRCRD</url>
+    <localizacion>Junta Municipal del Distrito de Retiro</localizacion>
+    <coordenadaLongitud>-3.6772826298329093</coordenadaLongitud>
+    <coordenadaLatitud>40.402190438836826</coordenadaLatitud>
+    <actuaciones>
+        <frecuencia>WEEKLY</frecuencia>
+        <dias></dias>
+        <intervalo>1</intervalo>
+    </actuaciones>
+    <sitiosInteres>
+        <titulo>Nave de motores de Pacífico</titulo>
+        <resumen>La antigua central eléctrica de Pacífico (también denominada central térmica de Pacífico o fábrica de electricidad de Pacífico) es una instalación industrial perteneciente al Metro de Madrid. El 11 de abril de 2013, la Dirección General de Patrimonio Histórico de la Comunidad de Madrid la declaró (...)</resumen>
+        <urlWikipedia>https://es.wikipedia.org/wiki/Nave_de_motores_de_Pac%C3%ADfico</urlWikipedia>
+    </sitiosInteres>
+</eventoCultural>

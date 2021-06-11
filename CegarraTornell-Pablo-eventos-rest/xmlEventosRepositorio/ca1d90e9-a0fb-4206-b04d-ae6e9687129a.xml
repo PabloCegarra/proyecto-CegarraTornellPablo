@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<eventoCultural xmlns="http://www.um.es/EventoCultural" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="ca1d90e9-a0fb-4206-b04d-ae6e9687129a" xsi:schemaLocation="EventoCultural.xsd">
+    <nombre>El Dragón Chef</nombre>
+    <tipo>CuentacuentosTiteresMarionetas</tipo>
+    <fechaInicio>2021-06-12</fechaInicio>
+    <fechaFin>2021-06-12</fechaFin>
+    <resumen>Al dragón le gustaba mucho cocinar, tenía un puesto de maíz y piensa en echar pimienta. Cuando se forma una nube de polvo, el dragón estornuda y empieza a explotar el maíz y a convertirse en palomitas. Así es como aprendió a hacerlas, por lo que aprovecha este descubrimiento para venderlas.</resumen>
+    <url>http://www.madrid.es/sites/v/index.jsp?vgnextchannel=ca9671ee4a9eb410VgnVCM100000171f5a0aRCRD&amp;vgnextoid=ae55cd29827cf610VgnVCM2000001f4a900aRCRD</url>
+    <localizacion>Centro Cultural La Vaguada (Fuencarral - El Pardo)</localizacion>
+    <coordenadaLongitud>-3.709138377702435</coordenadaLongitud>
+    <coordenadaLatitud>40.47900813206291</coordenadaLatitud>
+    <actuaciones>
+        <frecuencia>WEEKLY</frecuencia>
+        <dias></dias>
+        <intervalo>1</intervalo>
+    </actuaciones>
+    <sitiosInteres>
+        <titulo>Estación de Herrera Oria</titulo>
+        <resumen>Herrera Oria es una estación de la línea 9 del Metro de Madrid en España situada bajo la calle Ginzo de Limia, en el tramo comprendido entre la Avenida del Cardenal Herrera Oria y la Avenida de la Ilustración, entre los barrios de El Pilar y La Paz, ambos pertenecientes al distrito Fuencarral-El (...)</resumen>
+        <urlWikipedia>https://es.wikipedia.org/wiki/Estaci%C3%B3n_de_Herrera_Oria</urlWikipedia>
+    </sitiosInteres>
+</eventoCultural>

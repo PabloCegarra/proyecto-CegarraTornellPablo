@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<eventoCultural xmlns="http://www.um.es/EventoCultural" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="00b567b1-f2be-459e-ac7b-fc5688997ae9" xsi:schemaLocation="EventoCultural.xsd">
+    <nombre>De 3 a 5 años: 'La princesa y el guisante' y 'El hombrecillo de jengibre'</nombre>
+    <tipo>CursosTalleres</tipo>
+    <fechaInicio>2021-04-23</fechaInicio>
+    <fechaFin>2021-04-23</fechaFin>
+    <resumen>Lectura y dinamización de ambos cuentos.  Para niños y niñas de 3 a 5 años.  Actividad virtual.  Imprescindible inscripción previa    a través del   formulario .</resumen>
+    <url>http://www.madrid.es/sites/v/index.jsp?vgnextchannel=ca9671ee4a9eb410VgnVCM100000171f5a0aRCRD&amp;vgnextoid=ccdb6a6acb3f7710VgnVCM1000001d4a900aRCRD</url>
+    <actuaciones>
+        <frecuencia>WEEKLY</frecuencia>
+        <dias></dias>
+        <intervalo>1</intervalo>
+    </actuaciones>
+    <googleBooks>
+        <titulo>La princesa y el guisante</titulo>
+        <linkInfo>http://books.google.com/books?id=URzonQEACAAJ&amp;dq=%27La+princesa+y+el+guisante%27&amp;source=gbs_gdata</linkInfo>
+        <identifier>7Sb7ygEACAAJ</identifier>
+        <identifier>ISBN:8491015361</identifier>
+        <identifier>ISBN:9788491015369</identifier>
+    </googleBooks>
+    <googleBooks>
+        <titulo>El Hombre de Jengibre</titulo>
+        <linkInfo>http://books.google.com/books?id=T9XtDQAAQBAJ&amp;dq=%27El+hombrecillo+de+jengibre%27&amp;source=gbs_gdata</linkInfo>
+        <identifier>xc-BzQEACAAJ</identifier>
+        <identifier>ISBN:077878505X</identifier>
+        <identifier>ISBN:9780778785057</identifier>
+    </googleBooks>
+</eventoCultural>

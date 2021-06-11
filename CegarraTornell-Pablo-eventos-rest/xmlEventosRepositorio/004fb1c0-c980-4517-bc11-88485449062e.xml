@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<eventoCultural xmlns="http://www.um.es/EventoCultural" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="004fb1c0-c980-4517-bc11-88485449062e" xsi:schemaLocation="EventoCultural.xsd">
+    <nombre>20 a tocar!.</nombre>
+    <tipo>DanzaBaile</tipo>
+    <fechaInicio>2021-06-12</fechaInicio>
+    <fechaFin>2021-06-12</fechaFin>
+    <resumen>Actuación musical de la Escuela Municipal de Música Maestro Barbieri.</resumen>
+    <url>http://www.madrid.es/sites/v/index.jsp?vgnextchannel=ca9671ee4a9eb410VgnVCM100000171f5a0aRCRD&amp;vgnextoid=4388dfc243cc9710VgnVCM1000001d4a900aRCRD</url>
+    <actuaciones>
+        <frecuencia>WEEKLY</frecuencia>
+        <dias></dias>
+        <intervalo>1</intervalo>
+    </actuaciones>
+</eventoCultural>

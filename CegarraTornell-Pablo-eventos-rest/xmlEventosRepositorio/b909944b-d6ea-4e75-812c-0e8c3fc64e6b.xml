@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<eventoCultural xmlns="http://www.um.es/EventoCultural" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="b909944b-d6ea-4e75-812c-0e8c3fc64e6b" xsi:schemaLocation="EventoCultural.xsd">
+    <nombre>A nosotros nos daba igual</nombre>
+    <tipo>ProgramacionDestacadaAgendaCultura</tipo>
+    <fechaInicio>2021-06-24</fechaInicio>
+    <fechaFin>2021-06-24</fechaFin>
+    <resumen></resumen>
+    <url>http://www.madrid.es/sites/v/index.jsp?vgnextchannel=ca9671ee4a9eb410VgnVCM100000171f5a0aRCRD&amp;vgnextoid=becc8d9025e53710VgnVCM1000001d4a900aRCRD</url>
+    <localizacion>Naves Español en Matadero</localizacion>
+    <coordenadaLongitud>-3.697247685884226</coordenadaLongitud>
+    <coordenadaLatitud>40.39241374953321</coordenadaLatitud>
+    <actuaciones>
+        <frecuencia>WEEKLY</frecuencia>
+        <dias></dias>
+        <intervalo>1</intervalo>
+    </actuaciones>
+    <sitiosInteres>
+        <titulo>Mercado de Guillermo de Osma</titulo>
+        <resumen>El Mercado Guillermo de Osma es uno de los dos mercados municipales de abastos del distrito de Arganzuela (Madrid).José Pamias Ruiz (Firm), (1976), Guía urbana de Madrid, Volumen 1, Primera edición, Madrid, Página 82 La denominación del mercado es en honor del diplomático español del siglo XIX (...)</resumen>
+        <urlWikipedia>https://es.wikipedia.org/wiki/Mercado_de_Guillermo_de_Osma</urlWikipedia>
+    </sitiosInteres>
+</eventoCultural>
