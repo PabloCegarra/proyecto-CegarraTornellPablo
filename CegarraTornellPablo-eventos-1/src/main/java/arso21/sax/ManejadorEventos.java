@@ -1,5 +1,4 @@
 ﻿package arso21.sax;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;

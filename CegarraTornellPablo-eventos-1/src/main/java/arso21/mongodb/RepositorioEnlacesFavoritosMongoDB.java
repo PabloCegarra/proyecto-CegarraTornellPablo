@@ -31,6 +31,7 @@ import com.rabbitmq.client.ConnectionFactory;
 import arso21.repositorio.EntidadNoEncontrada;
 import arso21.repositorio.RepositorioException;
 
+
 public class RepositorioEnlacesFavoritosMongoDB implements RepositorioEnlacesFavoritos {
 
 	private MongoCollection<EnlaceFavoritos> enlaces;
@@ -39,7 +40,7 @@ public class RepositorioEnlacesFavoritosMongoDB implements RepositorioEnlacesFav
 
 		// TODO: la cadena de conexión debería obtenerse de una propiedad
 
-		String uriString = "mongodb+srv://arso:arso-21@cluster0.wkdnc.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+		String uriString = "mongodb://arso:arso-21@cluster0-shard-00-00.wkdnc.mongodb.net:27017,cluster0-shard-00-01.wkdnc.mongodb.net:27017,cluster0-shard-00-02.wkdnc.mongodb.net:27017/myFirstDatabase?ssl=true&replicaSet=atlas-13osw9-shard-0&authSource=admin&retryWrites=true&w=majority";
 
 		ConnectionString connectionString = new ConnectionString(uriString);
 
@@ -175,17 +176,17 @@ public class RepositorioEnlacesFavoritosMongoDB implements RepositorioEnlacesFav
 	}
 
 	@Override
-	public Set<String> getAllEtiquetas(String id) throws RepositorioException {
+	public Etiquetas getAllEtiquetas(String id) throws RepositorioException {
 
 		EnlaceFavoritos enlace = enlaces.find(Filters.eq("_id", new ObjectId(id))).first();
 
-		Set<String> allEtiquetas = new HashSet<>();
+		Etiquetas allEtiquetas = new Etiquetas();
 
 		if (enlace.getFavoritos() != null) {
 			Set<Favorito> favoritos = enlace.getFavoritos();
 			for (Favorito favorito : favoritos) {
-				Set<String> etiquetas = favorito.getEtiquetas();
-				allEtiquetas.addAll(etiquetas);
+				Etiquetas etiquetas = favorito.getEtiquetas();
+				allEtiquetas.getEtiquetas().addAll(etiquetas.getEtiquetas());
 			}
 		}
 
@@ -204,8 +205,8 @@ public class RepositorioEnlacesFavoritosMongoDB implements RepositorioEnlacesFav
 			Set<Favorito> favoritos = enlace.getFavoritos();
 			for (Favorito favorito : favoritos) {
 				if (favorito.getEtiquetas() != null) {
-					Set<String> etiquetas = favorito.getEtiquetas();
-					if (etiquetas.contains(etiquetaQuery))
+					Etiquetas etiquetas = favorito.getEtiquetas();
+					if (etiquetas.getEtiquetas().contains(etiquetaQuery))
 						allUrls.add(favorito.getUrl());
 				}
 			}

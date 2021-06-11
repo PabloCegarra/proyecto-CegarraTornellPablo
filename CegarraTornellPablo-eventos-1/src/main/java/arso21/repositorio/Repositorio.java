@@ -1,5 +1,6 @@
 package arso21.repositorio;
 
+
 import java.util.List;
 
 // Repositorio para entidades gestionadas con id

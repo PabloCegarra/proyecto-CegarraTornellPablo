@@ -1,6 +1,5 @@
 package arso21.mongodb;
 
-
 public class FactoriaRepositorioEnlacesFavoritos {
 
 	private static RepositorioEnlacesFavoritos repository = null;

@@ -1,26 +1,19 @@
 package arso21.servicio;
 
 import java.io.BufferedReader;
-import java.io.ByteArrayInputStream;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.StringReader;
 import java.math.BigInteger;
 import java.net.MalformedURLException;
-import java.net.URISyntaxException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
-import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
-import java.security.KeyManagementException;
-import java.security.NoSuchAlgorithmException;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -28,9 +21,7 @@ import javax.json.Json;
 import javax.json.JsonArray;
 import javax.json.JsonObject;
 import javax.json.JsonReader;
-import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
-import javax.xml.bind.Unmarshaller;
 import javax.xml.datatype.XMLGregorianCalendar;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -48,21 +39,14 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
-import com.rabbitmq.client.AMQP;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
-import com.rabbitmq.client.DefaultConsumer;
-import com.rabbitmq.client.Envelope;
 
-import arso21.mapeo.RootElement;
 import arso21.rabbitMQ.ConsumerFavoritos;
-import arso21.repositorio.EntidadNoEncontrada;
 import arso21.repositorio.FactoriaRepositorioEventoCultural;
 import arso21.repositorio.RepositorioEventoCultural;
-import arso21.repositorio.RepositorioException;
 import arso21.repositorio.utils.Utils;
-import arso21.sax.EventoResumen;
 import arso21.sax.ListadoEventos;
 import arso21.sax.ManejadorEventos;
 import es.um.eventocultural.EventoCultural;
@@ -79,10 +63,12 @@ public class EventosServiceImpl implements IEventosService {
 
 
 	private static EventosServiceImpl instancia;
-	
+
+	private RepositorioEventoCultural repositorio = FactoriaRepositorioEventoCultural.getRepositorio();
 
 
-	public static EventosServiceImpl getInstancia() throws JAXBException {
+
+	public static EventosServiceImpl getInstancia(){
 
 		if (instancia == null)
 			instancia = new EventosServiceImpl();
@@ -117,9 +103,8 @@ public class EventosServiceImpl implements IEventosService {
 	private String llamarServicio(String url) {
 		String result = "";
 		try {
-			URL urlFind = new URL(url);
-			URLConnection connection = urlFind.openConnection();
-			BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+			
+			BufferedReader in = new BufferedReader(new InputStreamReader(new URL(url).openStream(), "UTF-8"));
 			String line;
 			while ((line = in.readLine()) != null) {
 				result += line + "\n";
@@ -134,9 +119,9 @@ public class EventosServiceImpl implements IEventosService {
 	}
 
 	@Override
-	public ListadoEventos findListadoEventos() throws Exception {
-		String result = "a";
-		//result = llamarServicio(URI_EVENTOS_MADRID);
+	public ListadoEventos getListadoEventos() throws Exception {
+		String result = "";
+		result = llamarServicio(URI_EVENTOS_MADRID);
 
 		ListadoEventos listadoEventos = new ListadoEventos();
 
@@ -155,23 +140,9 @@ public class EventosServiceImpl implements IEventosService {
 
 		try {
 			ManejadorEventos manejador = new ManejadorEventos();
-			//analizador.parse(new InputSource(new StringReader(xmlStr)), manejador);
-			analizador.parse("xml/agenda.xml", manejador);
+			analizador.parse(new InputSource(new StringReader(xmlStr)), manejador);
+			//analizador.parse("xml/agenda.xml", manejador);
 			listadoEventos = manejador.getListadoEventos();
-			int contador = 0;
-			for(EventoResumen evento : listadoEventos.getEventos()) {
-				contador++;
-				System.out.println("Evento Nº: " + contador);
-				System.out.println("\t" + evento.getId());
-				System.out.println("\t" + evento.getTitulo());
-				System.out.println("\t" + evento.getUrl());
-				System.out.println("\t" + evento.getFechaInicio());
-				System.out.println("\t" + evento.getDescripcion());
-				System.out.println("\t" + evento.getTipo());
-
-
-			}
-			System.out.println("Numero de eventos: " + listadoEventos.getEventos().size());
 
 		} catch (IOException e) {
 			System.out.println("El documento no ha podido ser leído");
@@ -183,7 +154,7 @@ public class EventosServiceImpl implements IEventosService {
 	}
 
 	@Override
-	public EventoCultural findInfoEvento(String url) throws Exception {
+	public EventoCultural getInfoEvento(String url) throws Exception {
 		//String result = "";
 		EventoCultural evento;
 		//result = llamarServicio(url);
@@ -192,8 +163,10 @@ public class EventosServiceImpl implements IEventosService {
 		evento = procesarJsonEvento(inputStream);
 
 		evento = procesarGeoname(evento);
-		if ((evento.getTipo().equals("CursosTalleres")) && (getListaTitulosLibros(evento).size() > 0))
+		if ((evento.getTipo().contains("CursosTalleres")) && (getListaTitulosLibros(evento).size() > 0))
 			evento = procesarGoogleBooks(evento);
+		
+		repositorio.add(evento);
 		return evento;
 	}
 
@@ -353,8 +326,5 @@ public class EventosServiceImpl implements IEventosService {
 		return eventoObject;
 	}
 	
-	public void borrarRepositorio() {
-		//repositorio.borrarBBDD();
-	}
 
 }

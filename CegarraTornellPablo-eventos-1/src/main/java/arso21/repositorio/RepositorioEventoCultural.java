@@ -1,5 +1,6 @@
 package arso21.repositorio;
 
+
 import es.um.eventocultural.EventoCultural;
 
 public interface RepositorioEventoCultural extends Repositorio<EventoCultural, String> {

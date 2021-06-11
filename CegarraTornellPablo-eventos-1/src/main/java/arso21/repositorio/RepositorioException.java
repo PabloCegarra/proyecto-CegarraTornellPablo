@@ -1,5 +1,6 @@
 package arso21.repositorio;
 
+
 @SuppressWarnings("serial")
 public class RepositorioException extends Exception {
 

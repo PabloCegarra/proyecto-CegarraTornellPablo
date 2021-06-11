@@ -1,5 +1,4 @@
 ﻿package arso21.sax;
-
 import java.io.IOException;
 import java.util.LinkedList;
 

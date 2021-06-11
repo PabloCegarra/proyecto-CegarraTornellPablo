@@ -41,11 +41,9 @@ public class ConsumerFavoritos extends DefaultConsumer{
         
         if(favorito.getUrl().contains("https://datos.madrid.es/egob/catalogo/tipo/evento/")){
 			try {
-				EventoCultural evento = serviceEventos.findInfoEvento(favorito.getUrl());
-				repo.add(evento);
+				EventoCultural evento = serviceEventos.getInfoEvento(favorito.getUrl());
 				
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
         }
