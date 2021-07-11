@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
@@ -26,9 +27,9 @@ public class EventosControladorRest {
 	@Context
 	private UriInfo uriInfo;
 
-	//curl -X GET http://localhost:8080/api/eventos/ListadoEventos
+	//curl -X GET http://localhost:8080/api/eventos/
 	@GET
-	@Path("/ListadoEventos/")
+	@Path("/")
 	@Produces(MediaType.APPLICATION_XML)
 	public Response getListadoEventos() throws Exception {
 		ListadoEventos resultado = servicioEventos.getListadoEventos();
@@ -41,11 +42,11 @@ public class EventosControladorRest {
 
 	}
 
-	// curl -X GET http://localhost:8080/api/eventos/InfoEvento?url=https://datos.madrid.es/egob/catalogo/tipo/evento/11410328.json
+	// curl -X GET http://localhost:8080/api/eventos/https://datos.madrid.es/egob/catalogo/tipo/evento/11422004.json
 	@GET
-	@Path("/InfoEvento")
+	@Path("/{url: .*}")
 	@Produces(MediaType.APPLICATION_XML)
-	public Response getInfoEvento(@QueryParam("url") String url) throws Exception {
+	public Response getInfoEvento(@PathParam("url") String url) throws Exception {
 
 		if (!url.contains("https://datos.madrid.es/egob/catalogo/tipo/evento/"))
 			return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("La url especificada no es correcta")

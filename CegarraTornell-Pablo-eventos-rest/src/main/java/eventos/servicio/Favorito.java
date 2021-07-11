@@ -7,14 +7,14 @@ import java.util.Set;
 public class Favorito {
 
 	private String url;
-    private Set<String> etiquetas = new HashSet<String>();
+    private Set<Etiquetas> etiquetas = new HashSet<Etiquetas>();
 
 	
-    public void setEtiquetas(Set<String> etiquetas) {
+    public void setEtiquetas(Set<Etiquetas> etiquetas) {
 		this.etiquetas = etiquetas;
 	}
     
-    public Set<String> getEtiquetas() {
+    public Set<Etiquetas> getEtiquetas() {
 		return etiquetas;
 	}
     

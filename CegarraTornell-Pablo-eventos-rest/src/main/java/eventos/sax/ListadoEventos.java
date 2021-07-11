@@ -10,7 +10,6 @@ public class ListadoEventos {
 	private List<EventoResumen> eventos;
 	
 	public ListadoEventos() {
-		// TODO Auto-generated constructor stub
 	}
 	
 	

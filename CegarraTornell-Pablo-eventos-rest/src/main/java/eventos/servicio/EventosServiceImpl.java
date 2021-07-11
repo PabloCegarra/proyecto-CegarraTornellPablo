@@ -65,19 +65,19 @@ public class EventosServiceImpl implements IEventosService {
 
 	private RepositorioEventoCultural repositorio = FactoriaRepositorioEventoCultural.getRepositorio();
 
-
-
-	public static EventosServiceImpl getInstancia(){
-
-		if (instancia == null)
-			instancia = new EventosServiceImpl();
-		
+	public EventosServiceImpl() {
 		try {
 			inicializarConsumidorFavoritos();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
+	}
+
+	public static EventosServiceImpl getInstancia(){
+
+		if (instancia == null)
+			instancia = new EventosServiceImpl();
 		return instancia;
 	}
 	
@@ -154,10 +154,7 @@ public class EventosServiceImpl implements IEventosService {
 
 	@Override
 	public EventoCultural getInfoEvento(String url) throws Exception {
-		//String result = "";
 		EventoCultural evento;
-		//result = llamarServicio(url);
-		//InputStream inputStream = new ByteArrayInputStream(result.getBytes(Charset.forName("UTF-8")));
 		InputStream inputStream = new URL(url).openStream();
 		evento = procesarJsonEvento(inputStream);
 

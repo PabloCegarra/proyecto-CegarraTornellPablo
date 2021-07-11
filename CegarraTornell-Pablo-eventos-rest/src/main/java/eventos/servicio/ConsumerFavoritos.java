@@ -10,18 +10,14 @@ import com.rabbitmq.client.Envelope;
 
 
 import es.um.eventocultural.EventoCultural;
-import eventos.repositorio.FactoriaRepositorioEventoCultural;
-import eventos.repositorio.RepositorioEventoCultural;
 
 public class ConsumerFavoritos extends DefaultConsumer{
 	
 	private IEventosService serviceEventos;
-	private RepositorioEventoCultural repo;
 
 	public ConsumerFavoritos(Channel channel, IEventosService serviceEventos) {
 		super(channel);
 		this.serviceEventos = serviceEventos;
-		this.repo = FactoriaRepositorioEventoCultural.getRepositorio();;
 	}
 	
 	
@@ -29,8 +25,6 @@ public class ConsumerFavoritos extends DefaultConsumer{
     public void handleDelivery(String consumerTag, Envelope envelope, AMQP.BasicProperties properties,
             byte[] body) throws IOException {
         
-        String routingKey = envelope.getRoutingKey();
-        String contentType = properties.getContentType();
         long deliveryTag = envelope.getDeliveryTag();
 
         String contenido = new String(body, "UTF-8");
