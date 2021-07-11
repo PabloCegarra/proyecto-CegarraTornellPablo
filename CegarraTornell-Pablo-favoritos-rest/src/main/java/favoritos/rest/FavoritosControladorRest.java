@@ -1,7 +1,5 @@
 package favoritos.rest;
 
-import java.net.URI;
-import java.net.URL;
 import java.util.Set;
 
 import javax.ws.rs.DELETE;
@@ -16,15 +14,14 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.UriInfo;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 import javax.ws.rs.core.Response;
-import javax.ws.rs.core.UriBuilder;
 
 import favoritos.dominio.EnlaceFavoritos;
 import favoritos.dominio.Etiquetas;
 import favoritos.dominio.Favorito;
 import favoritos.dominio.Urls;
+import favoritos.repositorio.EntidadNoEncontrada;
 import favoritos.repositorio.RepositorioException;
 import favoritos.servicio.FavoritosServiceImpl;
 import favoritos.servicio.IFavoritosService;
@@ -41,25 +38,23 @@ public class FavoritosControladorRest {
 	private UriInfo uriInfo;
 	
 	
-	//curl -X PUT http://localhost:8080/api/favoritos/CreateDocument/1
+	//curl -X POST http://localhost:8080/api/favoritos/
 
-	@GET
-	@Path("/CreateDocument/")
+	@POST
 	public Response createDocument() throws RepositorioException {
 		
-		String id1 = servicioFavoritos.createEmptyDocument();
+		String id = servicioFavoritos.createEmpty();
 
-		return Response.ok(id1).build();
+		return Response.ok(id).build();
 	}
 	
 	
 	
-	//curl -X GET http://localhost:8080/api/favoritos/EnlaceFavoritos/{id}
-	//curl -X GET http://localhost:8080/api/favoritos/EnlaceFavoritos/60c22665566b7c052c7eff0c
+	//curl -X GET http://localhost:8080/api/favoritos/60c3bc61566b7c3378018e55
 	@GET
-	@Path("/EnlaceFavoritos/{id}")
+	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response getDocumentoById(@PathParam("id") String id) throws Exception {
+	public Response getDocumentoById(@PathParam("id") String id) throws RepositorioException, EntidadNoEncontrada  {
 
 
 		EnlaceFavoritos resultado = servicioFavoritos.getEnlaceById(id);
@@ -68,11 +63,11 @@ public class FavoritosControladorRest {
 
 	}
 	
-	//curl -X GET http://localhost:8080/api/favoritos/EnlaceFavoritos/60c3bc61566b7c3378018e55/etiquetas
+	//curl -X GET http://localhost:8080/api/favoritos/60c3bc61566b7c3378018e55/etiquetas
 	@GET
-	@Path("/EnlaceFavoritos/{id}/etiquetas")
+	@Path("/{id}/etiquetas")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response getAllTags(@PathParam("id") String id) throws Exception {
+	public Response getAllTags(@PathParam("id") String id) throws RepositorioException, EntidadNoEncontrada  {
 
 
 		Etiquetas resultado = servicioFavoritos.getAllEtiquetas(id);
@@ -81,11 +76,11 @@ public class FavoritosControladorRest {
 
 	}
 	
-	//curl -X GET http://localhost:8080/api/favoritos/EnlaceFavoritos/60c3bc61566b7c3378018e55/urls?tag=et1
+	//curl -X GET http://localhost:8080/api/favoritos/60c3bc61566b7c3378018e55/urls?tag=et1
 	@GET
-	@Path("/EnlaceFavoritos/{id}/urls")
+	@Path("/{id}/urls")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response getURLsByTag(@PathParam("id") String id,@QueryParam("tag") String tag ) throws Exception {
+	public Response getURLsByTag(@PathParam("id") String id,@QueryParam("tag") String tag ) throws RepositorioException, EntidadNoEncontrada{
 
 		
 		Set<String> urls = servicioFavoritos.getUrlByEtiqueta(id, tag);
@@ -93,18 +88,15 @@ public class FavoritosControladorRest {
 		Urls resultado = new Urls();
 		resultado.setUrls(urls);
 		
-		ObjectMapper mapperObj = new ObjectMapper();
-		String resultadoJSON = mapperObj.writeValueAsString(resultado);
-		
 
-		return Response.ok(resultadoJSON).build();
+		return Response.ok(resultado).build();
 
 	}
 	
-//curl -X DELETE http://localhost:8080/api/favoritos/EnlaceFavoritos/60c3bc61566b7c3378018e55/1340884.json
+	//curl -X DELETE http://localhost:8080/api/favoritos/60c3bc61566b7c3378018e55/https://datos.madrid.es/egob/catalogo/tipo/evento/11340884.json
 	@DELETE
-	@Path("/EnlaceFavoritos/{id}/{url}")
-	public Response deleteUrl(@PathParam("id") String id, @PathParam("url") String url) throws Exception {
+	@Path("/{id}/{url: .*}")
+	public Response deleteUrl(@PathParam("id") String id, @PathParam("url") String url) throws RepositorioException, EntidadNoEncontrada {
 		Favorito favorito = new Favorito();
 		favorito.setUrl(url);
 		servicioFavoritos.deleteUrl(id, favorito);
@@ -114,14 +106,15 @@ public class FavoritosControladorRest {
 	}
 	
 	
-	
-	
-	
-	
+	//curl -X PUT http://localhost:8080/api/favoritos/60c3bc61566b7c3378018e55/https://datos.madrid.es/egob/catalogo/tipo/evento/11340854.json
 	@PUT
-	@Path("")
-	public Response addUrl(@PathParam("id") String id) throws RepositorioException {
-		return Response.created(null).build();
+	@Path("/{id}/{url: .*}")
+	public Response addUrl(@PathParam("id") String id, @PathParam("url") String url) throws RepositorioException, EntidadNoEncontrada {
+		Favorito favorito = new Favorito();
+		favorito.setUrl(url);
+		favorito.setEtiquetas(new Etiquetas());
+		servicioFavoritos.addUrl(id, favorito);
+		return Response.ok(null).build();
 	}
 
 }
